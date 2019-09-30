@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>BATERIAS_TESTES</Id>
+  <Title>Acessar baterias de testes</Title>
+  <Level>Benner</Level>
+  <Reports />
+  <Pages>
+    <string>PAGES_AUTO_TESTCOLLECTION_FORM</string>
+    <string>PAGES_AUTO_TESTCOLLECTION_GRID</string>
+    <string>RELATORIO</string>
+  </Pages>
+  <Components>
+    <string>Benner.AutomatedTests.Server.Entities.EntityBusiness.Tests.TestCollectionEntityBusiness|GENERATEREPORT</string>
+  </Components>
+  <Operations>
+    <string>TESTCOLLECTION|DELETE</string>
+    <string>TESTCOLLECTION|GENERATEREPORT</string>
+    <string>TESTCOLLECTION|INSERT</string>
+    <string>TESTCOLLECTION|UPDATE</string>
+    <string>TESTCOLLECTION|VIEW</string>
+    <string>TESTEXECUTION|DELETE</string>
+    <string>TESTEXECUTION|INSERT</string>
+    <string>TESTEXECUTION|UPDATE</string>
+    <string>TESTEXECUTION|VIEW</string>
+  </Operations>
+  <Process />
+  <Tasks />
+</TaskPortable>

@@ -1,0 +1,42 @@
+﻿html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+#warmuppage {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 20px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    background: #eee;
+}
+
+#warmuppage #warmupcontent {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -104px;
+}
+
+#warmuppage #warmupcontent i {
+    display: block;
+    margin: 50px auto 40px auto;
+    color: rgb(236,24,70);
+}
+
+#warmuppage #warmupcontent h1 {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #777;
+}
+
+#warmuppage #warmupcontent h2 {
+    font-size: 20px;
+    letter-spacing: 0.15em;
+}

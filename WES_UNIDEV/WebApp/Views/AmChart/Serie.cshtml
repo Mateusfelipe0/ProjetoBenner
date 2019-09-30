@@ -1,0 +1,153 @@
+﻿@{
+    Layout = "~/Views/Shared/_BennerLayout.cshtml";
+}
+
+<script src="~/scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="~/scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+
+<input type="hidden" id="widgetId" value="@ViewBag.WidgetId" />
+<input type="hidden" id="serieId" value="@ViewBag.SerieId" />
+<input type="hidden" id="rotate" value="@ViewBag.Rotate" />
+
+<div>
+    <div class="modal-commands">
+        <button class="btn blue" id="salvar">
+            <i class="fa fa-check"></i> Salvar
+        </button>
+        @if (ViewBag.New == false)
+        {
+            <button class="btn red" id="excluir">
+                <i class="fa fa-minus"></i> Excluir
+            </button>
+        }
+        <button class="btn default" id="cancelar" data-dismiss="modal">
+            <i class="fa fa-times"></i> Cancelar
+        </button>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#tabSerie" data-toggle="tab">Série</a>
+        </li>
+        <li>
+            <a href="#tabDefinicao" data-toggle="tab">Avançado (JSON)</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tabSerie">
+            <div class="form">
+                <div class="form-body form-horizontal">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 text-center chart-type" id="area" serie-type="area">
+                            <img src="@Url.Content("~/content/img/amchart/area.png")" />
+                            <br />
+                            <label>Área</label>
+                            <br />
+                        </div>
+                        @if (ViewBag.ChartType == "serial")
+                        {
+                            <div class="col-md-3 col-sm-3 col-xs-3 text-center chart-type" id="bar" serie-type="column">
+                                <img src="@Url.Content("~/content/img/amchart/bar.png")" />
+                                <br />
+                                <label>Barra</label>
+                                <br />
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 text-center chart-type" id="column" serie-type="column">
+                                <img src="@Url.Content("~/content/img/amchart/column.png")" />
+                                <br />
+                                <label>Coluna</label>
+                                <br />
+                            </div>
+                        }
+                        <div class="col-md-3 col-sm-3 col-xs-3 text-center chart-type" id="line" serie-type="line">
+                            <img src="@Url.Content("~/content/img/amchart/line.png")" />
+                            <br />
+                            <label>Linha</label>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <div class="label-form">
+                                <div class="label-title">Campo de valor</div>
+                            </div>
+                        </label>
+                        <div>
+                            <select class="form-control" id="valor">
+                                @foreach (var field in ViewBag.Fields)
+                                {
+                                    <option value="@field.Name">@field.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <div class="label-form">
+                                <div class="label-title">Título da série</div>
+                            </div>
+                        </label>
+                        <div>
+                            <input type="text" class="form-control" id="titulo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <div class="label-form">
+                                <div class="label-title">Texto do rótulo</div>
+                            </div>
+                        </label>
+                        <div>
+                            <select class="form-control" id="labelText">
+                                <option value="">Nenhum</option>
+                                <option value="[[category]] : [[value]]">Nome : Valor</option>
+                                <option value="[[category]]">Nome</option>
+                                <option value="[[value]]">Valor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <div class="label-form">
+                                <div class="label-title">Texto do balão</div>
+                            </div>
+                        </label>
+                        <div>
+                            <select class="form-control" id="balloonText">
+                                <option value="[[category]] : [[value]]">Nome : Valor</option>
+                                <option value="[[category]]">Nome</option>
+                                <option value="[[value]]">Valor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <div class="label-form">
+                                <div class="label-title">Cor</div>
+                            </div>
+                        </label>
+                        <div>
+                            <input type="text" id="cor" class="form-control minicolors-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tabDefinicao">
+            <div class="note note-info">
+                <p>Veja a <a href="https://docs.amcharts.com/3/javascriptcharts/AmGraph" target="_blank">documentação</a> e o <a href="https://live.amcharts.com/new/" target="_blank">editor</a> do AmCharts e confira todas as possibilidades de customização para a série do seu gráfico.</p>
+            </div>
+            <div id="editor" style="height:380px">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            Benner.Apps.AmChartsSeries.init();
+        });
+    </script>
+}

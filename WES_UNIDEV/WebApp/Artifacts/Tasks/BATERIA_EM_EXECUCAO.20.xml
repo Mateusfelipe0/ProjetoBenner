@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>BATERIA_EM_EXECUCAO</Id>
+  <Title>Acessar bateria de testes em execução</Title>
+  <Level>Benner</Level>
+  <Reports />
+  <Pages>
+    <string>PAGES_AUTO_TESTCOLLECTION_EMEXECUCAO</string>
+    <string>PAGES_AUTO_TESTEXECUTION_FORM</string>
+    <string>PAGES_AUTO_TESTEXECUTION_GRID</string>
+  </Pages>
+  <Components />
+  <Operations>
+    <string>TESTEXECUTION|DELETE</string>
+    <string>TESTEXECUTION|INSERT</string>
+    <string>TESTEXECUTION|UPDATE</string>
+    <string>TESTEXECUTION|VIEW</string>
+  </Operations>
+  <Process />
+  <Tasks />
+</TaskPortable>

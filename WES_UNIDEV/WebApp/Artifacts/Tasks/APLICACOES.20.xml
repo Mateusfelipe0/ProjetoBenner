@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>APLICACOES</Id>
+  <Title>Acessar aplicações</Title>
+  <Level>Benner</Level>
+  <Reports />
+  <Pages>
+    <string>PAGES_AUTO_TESTABLEAPPLICATION_FORM</string>
+    <string>PAGES_AUTO_TESTABLEAPPLICATION_GRID</string>
+    <string>PAGES_AUTO_USERCREDENTIALS_FORM</string>
+    <string>PAGES_AUTO_USERCREDENTIALS_GRID</string>
+    <string>PAGES_TESTABLEAPPLICATION_WIZARD</string>
+    <string>PAGES_WIZARDNOVAAPLICACAO_WIZARDNOVAAPLICACAO</string>
+  </Pages>
+  <Components>
+    <string>Benner.AutomatedTests.Server.Entities.Business.TestableApplicationBusiness|CRIARAPLICACAO</string>
+    <string>Benner.AutomatedTests.Server.Entities.Entity.Params.TestableApplication|RELOAD</string>
+    <string>Benner.AutomatedTests.Server.Entities.EntityBusiness.Params.TestableApplicationEntityBusiness|LOADTESTS</string>
+  </Components>
+  <Operations>
+    <string>APPTESTPROFILE|DELETE</string>
+    <string>APPTESTPROFILE|INSERT</string>
+    <string>APPTESTPROFILE|UPDATE</string>
+    <string>APPTESTPROFILE|VIEW</string>
+    <string>TESTABLEAPPLICATION|DELETE</string>
+    <string>TESTABLEAPPLICATION|DETALHARAPLICACAO</string>
+    <string>TESTABLEAPPLICATION|INSERT</string>
+    <string>TESTABLEAPPLICATION|RELOAD</string>
+    <string>TESTABLEAPPLICATION|UPDATE</string>
+    <string>TESTABLEAPPLICATION|VIEW</string>
+    <string>TV_DADOSAPLICACAO|INSERT</string>
+    <string>TV_DADOSAPLICACAO|VIEW</string>
+    <string>TV_INSTALACAO|INSERT</string>
+    <string>TV_INSTALACAO|VIEW</string>
+    <string>TV_PERFILAPLICACAO|INSERT</string>
+    <string>TV_PERFILAPLICACAO|VIEW</string>
+    <string>TV_TIPOAPLICACAO|INSERT</string>
+    <string>TV_TIPOAPLICACAO|VIEW</string>
+    <string>USERCREDENTIALS|DELETE</string>
+    <string>USERCREDENTIALS|INSERT</string>
+    <string>USERCREDENTIALS|UPDATE</string>
+    <string>USERCREDENTIALS|VIEW</string>
+    <string>USERTESTDEFINITION|DELETE</string>
+    <string>USERTESTDEFINITION|INSERT</string>
+    <string>USERTESTDEFINITION|UPDATE</string>
+    <string>USERTESTDEFINITION|VIEW</string>
+    <string>USERTESTPROFILE|DELETE</string>
+    <string>USERTESTPROFILE|INSERT</string>
+    <string>USERTESTPROFILE|UPDATE</string>
+    <string>USERTESTPROFILE|VIEW</string>
+  </Operations>
+  <Process />
+  <Tasks />
+</TaskPortable>

@@ -1,0 +1,244 @@
+﻿<style>
+    .chart-themes {
+        padding-left: 0px;
+    }
+
+        .chart-themes li {
+            display: inline-block;
+        }
+
+            .chart-themes li a {
+                border-radius: 4px !important;
+            }
+
+            .chart-themes li.active a {
+                border: 2px solid #72acd9;
+            }
+
+            .chart-themes li a:hover {
+                border: 2px solid #72acd9;
+            }
+
+    .theme-default a {
+        background-position: 0 0;
+    }
+
+        .theme-default.active a, .theme-default a:hover {
+            background-position: -2px -2px;
+        }
+
+    .theme-patterns a {
+        background-position: -32px 0;
+    }
+
+        .theme-patterns.active a, .theme-patterns a:hover {
+            background-position: -34px -2px;
+        }
+
+    .theme-chalk a {
+        background-position: -64px -0px;
+    }
+
+        .theme-chalk.active a, .theme-chalk a:hover {
+            background-position: -66px -2px;
+        }
+
+    .theme-dark a {
+        background-position: -96px 0;
+    }
+
+        .theme-dark.active a, .theme-dark a:hover {
+            background-position: -98px -2px;
+        }
+
+    .theme-light a {
+        background-position: -128px 0;
+    }
+
+        .theme-light.active a, .theme-light a:hover {
+            background-position: -130px -2px;
+        }
+
+    .theme-black a {
+        background-position: -158px 0;
+    }
+
+        .theme-black.active a, .theme-black a:hover {
+            background-position: -160px -2px;
+        }
+
+
+    .chart-themes a {
+        background-image: url(@Url.Content("~/content/img/amchart/themes.png"));
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+</style>
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#tabSerie" data-toggle="tab">Gráfico</a>
+        </li>
+        <li>
+            <a href="#tabDefinicao" data-toggle="tab">Avançado (JSON)</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tabSerie">
+            <div class="form">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @for (var i = 0; i < ViewBag.ChartTypes.Count; i++)
+                        {
+                            var chartType = ViewBag.ChartTypes[i];
+                            <div class="text-center chart-type" chart-value="@chartType.Value">
+                                <img src="@chartType.ImageUrl" />
+                                <label>@chartType.Name</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Tema</div>
+                        </div>
+                    </label>
+                    <div>
+                        <ul class="chart-themes">
+                            <li class="theme-default"><a class="default"></a></li>
+                            <li class="theme-patterns"><a class="patterns"></a></li>
+                            <li class="theme-chalk"><a class="chalk"></a></li>
+                            <li class="theme-dark"><a class="dark"></a></li>
+                            <li class="theme-light"><a class="light"></a></li>
+                            <li class="theme-black"><a class="black"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Campo de rótulo</div>
+                        </div>
+                    </label>
+                    <div>
+                        <select class="form-control" id="category">
+                            @foreach (var field in ViewBag.Fields)
+                            {
+                                <option value="@field.Name">@field.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Campo de valor</div>
+                        </div>
+                    </label>
+                    <div>
+                        <select class="form-control" id="value">
+                            @foreach (var field in ViewBag.Fields)
+                            {
+                                <option value="@field.Name">@field.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group show-when-pie">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Texto do rótulo</div>
+                        </div>
+                    </label>
+                    <div>
+                        <select class="form-control" id="labelText">
+                            <option value="">Nenhum</option>
+                            <option value="[[title]]: [[value]]([[percents]]%)">Nome: Valor(%)</option>
+                            <option value="[[title]]: [[value]]">Nome: Valor</option>
+                            <option value="[[title]]: [[percents]]%">Nome: %</option>
+                            <option value="[[title]]">Nome</option>
+                            <option value="[[value]]">Valor</option>
+                            <option value="[[percents]]%">%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Posição das legendas</div>
+                        </div>
+                    </label>
+                    <div>
+                        <select class="form-control" id="legend">
+                            <option value="none">Nenhuma</option>
+                            <option value="bottom">Abaixo</option>
+                            <option value="top">Acima</option>
+                            <option value="left">Esquerda</option>
+                            <option value="right">Direita</option>
+                            <option value="absolute">Absoluta</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group show-when-pie">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Texto da legenda</div>
+                        </div>
+                    </label>
+                    <div>
+                        <select class="form-control" id="legendText">
+                            <option value='{ "labelText": "[[title]]", "valueText": "" }'>Nome</option>
+                            <option value='{ "labelText": "[[title]]", "valueText": "[[value]]" }'>Nome Valor</option>
+                            <option value='{ "labelText": "[[title]]", "valueText": "[[value]]([[percents]]%)" }'>Nome Valor(%)</option>
+                            <option value='{ "labelText": "[[title]]", "valueText": "[[percents]]%" }'>Nome %</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group show-when-serial">
+                    <label class="control-label">
+                        <div class="label-form">
+                            <div class="label-title">Título do eixo de valor</div>
+                        </div>
+                    </label>
+                    <div>
+                        <input type="text" id="legendaEixo" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mt-checkbox-list">
+                        <label class="mt-checkbox mt-checkbox-outline show-when-serial">
+                            <input type="checkbox" id="rotateLabel" /> Rotacionar rótulos
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox mt-checkbox-outline show-when-serial">
+                            <input type="checkbox" id="empilharSeries" /> Empilhar séries
+                            <span></span>
+                        </label>
+                        <label class="mt-checkbox mt-checkbox-outline show-when-pie show-when-serial">
+                            <input type="checkbox" id="grafico3D" /> Gráfico 3D
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="tab-pane" id="tabDefinicao">
+            <div class="note note-info">
+                <p>Veja a <a href="https://docs.amcharts.com/3/javascriptcharts/AmChart" target="_blank">documentação</a> do AmCharts e confira todas as possibilidades de customização para o seu gráfico.</p>
+            </div>
+            <div id="editor" style="height:440px">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Ajax.OnReadyScript("Benner.Apps.AmChartsAttributes.init();")
+

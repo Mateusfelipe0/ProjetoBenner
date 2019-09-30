@@ -1,0 +1,2 @@
+<%@ ServiceHost Language="C#" Debug="false" Service="Benner.Tecnologia.Workflow.Services.Implementation.WorkflowMonitoringService" 
+    Factory="Benner.Tecnologia.EnterpriseServiceLibrary.DynamicServiceHostFactory" %>

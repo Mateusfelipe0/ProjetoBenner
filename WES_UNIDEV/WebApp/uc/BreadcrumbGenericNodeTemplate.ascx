@@ -1,0 +1,1 @@
+﻿<a href="<%# ResolveClientUrl(Eval("url").ToString()) %>"><%# Eval("title") %></a>

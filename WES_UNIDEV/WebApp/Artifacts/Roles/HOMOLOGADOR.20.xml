@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<RolePortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>HOMOLOGADOR</Id>
+  <Title>Homologador</Title>
+  <Level>Benner</Level>
+  <Tasks>
+    <string>BATERIA_EM_EXECUCAO</string>
+    <string>BATERIAS_TESTES</string>
+    <string>PAGINA_INICIAL</string>
+    <string>SELECIONAR_TESTES</string>
+  </Tasks>
+  <Roles />
+</RolePortable>

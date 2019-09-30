@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<RolePortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>ADMINISTRADOR_BANCO_DADOS</Id>
+  <Title>Administrador de Banco de Dados</Title>
+  <Level>Benner</Level>
+  <Tasks>
+    <string>AGENTES_TESTES</string>
+    <string>BANCO_DADOS</string>
+  </Tasks>
+  <Roles>
+    <string>Z_ADMINISTRADOR</string>
+  </Roles>
+</RolePortable>

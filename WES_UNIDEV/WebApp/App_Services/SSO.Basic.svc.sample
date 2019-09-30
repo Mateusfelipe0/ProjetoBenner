@@ -1,0 +1,75 @@
+<%@ ServiceHost Language="C#" 
+    Service="BasicHttpSSOService" 
+    Factory="BasicHttpSSOServiceHostFactory" %>
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Description;
+using System.Runtime.Serialization;
+using System.ServiceModel.Web;
+using System.IO;
+using System.Web;
+using Benner.Tecnologia.EnterpriseServiceLibrary.TokenAuthentication;
+
+public class BasicHttpSSOServiceHostFactory : ServiceHostFactory
+{
+    protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+    {
+        ServiceHost host = new ServiceHost(serviceType, baseAddresses);
+        Type serviceContractType = typeof(BasicHttpSSOService);
+
+        // BasicHttpBinding
+        host.AddServiceEndpoint(serviceContractType, new BasicHttpBinding(), "");
+        
+		// Mantendo o endereço ao solicitar wsdl
+        if (!host.Description.Behaviors.Contains(typeof(UseRequestHeadersForMetadataAddressBehavior)))
+            host.Description.Behaviors.Add(new UseRequestHeadersForMetadataAddressBehavior());
+
+        // Service metadata
+        if (!host.Description.Behaviors.Contains(typeof(ServiceMetadataBehavior)))
+            host.Description.Behaviors.Add(new ServiceMetadataBehavior());
+        ServiceMetadataBehavior smb = host.Description.Behaviors[typeof(ServiceMetadataBehavior)] as ServiceMetadataBehavior;
+        smb.HttpGetEnabled = true;
+        
+        // Service Debug
+        ServiceDebugBehavior sdb = host.Description.Behaviors.Find<ServiceDebugBehavior>();
+        sdb.IncludeExceptionDetailInFaults = false;
+        return host;
+    }
+}
+
+[ServiceContract(
+    SessionMode = SessionMode.NotAllowed)]
+[ServiceBehavior(
+    InstanceContextMode = InstanceContextMode.PerCall,
+    ConcurrencyMode = ConcurrencyMode.Multiple)]
+[AspNetCompatibilityRequirements(
+    RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+public class BasicHttpSSOService
+{
+    [OperationContract]
+    public string GrantSSOAccessToken(string encodedUsername)
+    {
+        // Se este 3º conhece meu MachineKey, então deduzo que seja confiável. Mais detalhes em:
+        // http://msdn.microsoft.com/en-us/library/system.web.security.machinekey.aspx
+        
+        byte[] blob = System.Web.Security.MachineKey.Decode(
+            encodedUsername, 
+            System.Web.Security.MachineKeyProtection.All);
+        string decodedUsername = System.Text.Encoding.Default.GetString(blob);
+        
+        if (string.IsNullOrEmpty(decodedUsername))
+            throw new InvalidOperationException("Não foi possivel validar o nome do usuário");
+        
+        
+        
+        // Tecnologia, pode gerar um ticket sem senha, eu garanto!
+        var ticket = new TokenAuthenticationProvider().GrantSingleSignOnTicket(decodedUsername);
+
+        
+        
+        // senhor 3º, aqui está seu access token, cuide bem dele...
+        return string.Format("Bearer {0}", ticket.AccessToken);
+    }
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<configuration>
+  <system.serviceModel>
+    <bindings>
+
+      <basicHttpBinding>
+        <!-- Binding padrão para Basic com HTTPS (início) -->
+        <!-- Mais detalhes: http://wiki.benner.com.br/wiki/index.php?title=Servi%C3%A7os_ESL_com_protocolo_HTTPS -->
+        <binding name="basicHttpsDefaultConfiguration">
+          <security mode="Transport">
+            <!-- as configurações de segurança podem variar de acordo com o ambiente  -->
+            <!-- a configuração adequada deve ser avaliada caso a caso  -->
+            <transport clientCredentialType="None"/>
+          </security>
+        </binding>
+        <!-- Binding padrão para Basic com HTTPS (fim) -->
+      </basicHttpBinding>
+
+      <webHttpBinding>
+        <!-- Binding padrão para Web com HTTPS (início) -->
+        <!-- Mais detalhes: http://wiki.benner.com.br/wiki/index.php?title=Servi%C3%A7os_ESL_com_protocolo_HTTPS -->
+        <binding name="webHttpsDefaultConfiguration">
+          <!-- as configurações de segurança podem variar de acordo com o ambiente  -->
+          <!-- a configuração adequada deve ser avaliada caso a caso  -->
+          <security mode="Transport">
+            <transport clientCredentialType="None"/>
+          </security>
+        </binding>
+        <!-- Binding padrão para Web com HTTPS (fim) -->
+      </webHttpBinding>
+      
+      
+      <wsHttpBinding>
+        <binding allowCookies="True" name="wsHttpBindingConfig">
+          <security mode="None" />
+        </binding >
+      </wsHttpBinding>
+    </bindings>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="ServiceBehavior">
+          <serviceMetadata httpGetEnabled="true"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <services>
+      <service behaviorConfiguration="ServiceBehavior" name="Benner.Tecnologia.Workflow.Services.Implementation.WorkflowEntityService">
+        <endpoint address="wsHttpBinding" binding="wsHttpBinding" bindingConfiguration="wsHttpBindingConfig" contract="Benner.Tecnologia.Workflow.Services.Contracts.IWorkflowEntityService">
+          <identity>
+            <dns value="localhost" />
+          </identity>
+        </endpoint>
+        <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+      </service>
+      <service behaviorConfiguration="ServiceBehavior" name="Benner.Tecnologia.Workflow.Services.Implementation.WorkflowEngineService">
+        <endpoint address="wsHttpBinding" binding="wsHttpBinding" bindingConfiguration="wsHttpBindingConfig" contract="Benner.Tecnologia.Workflow.Services.Contracts.IWorkflowEngineService">
+          <identity>
+            <dns value="localhost" />
+          </identity>
+        </endpoint>
+        <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+      </service>
+      <service behaviorConfiguration="ServiceBehavior" name="Benner.Tecnologia.Workflow.Services.Implementation.WorkflowMonitoringService">
+        <endpoint address="wsHttpBinding" binding="wsHttpBinding" bindingConfiguration="wsHttpBindingConfig" contract="Benner.Tecnologia.Workflow.Services.Contracts.IWorkflowMonitoringService">
+          <identity>
+            <dns value="localhost" />
+          </identity>
+        </endpoint>
+        <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+      </service>
+    </services>
+  </system.serviceModel>
+  <appSettings>
+    <add key="systemInstanceName" value="WORKFLOW"/>
+  </appSettings>
+</configuration>

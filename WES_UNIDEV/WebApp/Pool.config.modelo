@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<poolcontroller>
+  <pools>
+    <pool>
+      <name>WES_DESENVOLVIMENTO_19_0</name>
+      <dbdriver>MSSQL2k</dbdriver>
+      <connectionstring>
+      </connectionstring>
+      <superserverhost>BNU-VTEC001</superserverhost>
+      <systemname>WES_DESENVOLVIMENTO_19_0</systemname>
+      <maxload>2</maxload>
+      <avoidtablecache>0</avoidtablecache>
+      <recycletime>120</recycletime>
+      <sessionexpiration>TimeoutOnly</sessionexpiration>
+    </pool>
+  </pools>
+</poolcontroller>

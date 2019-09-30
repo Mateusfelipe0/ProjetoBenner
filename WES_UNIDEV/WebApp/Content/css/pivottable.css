@@ -1,0 +1,54 @@
+﻿.dx-pivotgrid-nodata {
+    margin-left: 10px !important;
+}
+
+div[widget-type='PivotTable'] .fullscreen{
+    margin-right:5px;
+}
+
+div[widget-type='PivotTable'] .portlet.light{
+    overflow:hidden;
+}
+
+div[widget-type='PivotTable'] .portlet-fullscreen .pivot-table-content{
+    height:100% !important;
+}
+
+div[widget-type='PivotTable'] .blockUI {
+    z-index:11000 !important;
+}
+
+.dx-overlay-wrapper {
+    z-index:11000 !important;
+}
+
+.dx-pivotgrid td.dx-filter-header .dx-pivotgrid-toolbar {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.dx-pivotgrid .dx-column-header .dx-pivotgrid-toolbar .dx-button,
+.dx-pivotgrid .dx-filter-header .dx-pivotgrid-toolbar .dx-button {
+    margin-top: 2px;
+}
+
+.dx-pivotgrid .dx-column-header .dx-pivotgrid-toolbar .dx-pivotgrid-field-chooser-button,
+.dx-pivotgrid .dx-filter-header .dx-pivotgrid-toolbar .dx-pivotgrid-field-chooser-button {
+    margin-right: 2px;
+}
+
+.dx-pivotgrid td.dx-filter-header div.dx-pivotgrid-fields-area {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 40px;
+}
+
+.dx-pivotgrid td.dx-filter-header div.dx-pivotgrid-fields-area table thead.dx-pivotgrid-fields-area-head > tr > td {
+    display: inline-block;
+    padding: 0;
+    margin: 2px;
+}
+
+.dx-pivotgrid .dx-pivotgrid-fields-area-head tr > td:first-child {
+    padding-left: 0;
+}

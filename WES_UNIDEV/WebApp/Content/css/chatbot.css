@@ -1,0 +1,185 @@
+﻿#menuAtalhos #chat-bot {
+    display: none;
+}
+
+#chat-bot > a {
+    padding: 19px 10px 10px;
+}
+
+#chat-bot > a:hover,
+#chat-bot > a:focus {
+	background-color: #393939;
+}
+
+#chat-bot > a > i {
+	font-size: 17px;
+}
+
+.page-quick-sidebar-wrapper {
+	top: 50px;
+	z-index: 5000;
+	background: #3d3d3d;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar {
+	background: transparent;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a {
+	padding-top: 10px;
+	border: 0;
+	border-bottom: 3px solid #999 !important;
+	background: 0 0;
+	color: #fff !important;
+	text-decoration: none;
+	cursor: default;
+}
+
+.page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .break {
+    width: 100%;
+    height: 2px;
+    margin: 15px 0;
+    background: rgba(255,255,255,0.4);
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages {
+    position: initial;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post {
+    margin: 12px 0;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in + .post.in,
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out + .post.out {
+    margin-top: -18px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .avatar {
+    width: 30px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message {
+	background: #474747;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message {
+	margin-left: 40px;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message {
+	margin-right: 40px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow {
+	top: 8px;
+	border-right-color: #474747 !important;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow {
+	top: 8px;
+	border-left-color: #474747 !important;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message .btn {
+    display: block;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message .btn + .btn {
+    margin-top: 2px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message.card .image {
+    display: block;
+    margin-bottom: 6px;
+    text-align: center;
+    background: white;
+    background: rgba(255,255,255,0.2);
+    width: 100%;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message.card .image > img {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message.card .title {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message.card .subtitle {
+    display: block;
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message.card .body > * + p {
+    margin-top: 6px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message.card .body :last-child {
+    margin-bottom: 0 !important;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message .body {
+    word-break: break-all;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .datetime,
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .name {
+    color: #999;
+    color: rgba(255,255,255,0.4);
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-form {
+    position: relative;
+    padding-top: 30px;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-form .typing {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 15px;
+    color: #c3c3c3;
+    background: transparent;
+}
+
+.page-quick-sidebar-toggler {
+    top: 6px;
+    right: 9px;
+}
+
+.page-quick-sidebar-toggler > i::before {
+	content: "\e082" !important;
+}
+
+@media (min-width:601px) {
+	.page-quick-sidebar-toggler {
+		display: none !important;
+	}
+}
+
+@media (max-width:991px) {
+	.page-quick-sidebar-wrapper {
+		top: 0;
+		z-index: 10020;
+	}
+}
+
+@media (max-width:600px) {
+	.page-quick-sidebar-wrapper {
+		width: auto;
+		left: 100%;
+		right: -100%;
+		transition: left 300ms linear, right 300ms linear !important;
+	}
+
+	.page-quick-sidebar-open .page-quick-sidebar-wrapper {
+		left: 0;
+		right: 0;
+	}
+
+	.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {
+		width: auto !important;
+	}
+}

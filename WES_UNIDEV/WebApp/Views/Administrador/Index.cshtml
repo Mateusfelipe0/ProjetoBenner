@@ -1,0 +1,140 @@
+﻿<h3 class="page-title">Painel <small>administrador do sistema</small>
+</h3>
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        @Metronic.Tile("Usuários logados", @ViewBag.UsuariosLogados, "blue-madison", "fa fa-users")
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        @Metronic.Tile("Usuarios ativos", @ViewBag.UsuariosAtivos, "green-haze", "fa fa-globe")
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        @Metronic.Tile("Processos executados hoje", @ViewBag.ProcessosExecutados, "purple-plum", "fa fa-gears")
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        @Metronic.Tile("Processos com erro hoje", @ViewBag.ProcessosComErroHoje, "red-intense", "fa fa-warning")
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        @Metronic.Chart("chartdivVisitantes", "Visitantes únicos por mês", "fa fa-users")
+    </div>
+    <div class="col-md-6 col-sm-6">
+        @Metronic.Chart("chartdivProcess", "Processos executando", "fa fa-gears")
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $.ajax({
+            dataType: "json",
+            url: Benner.Page.getApplicationPath() + "api/Visitors",
+        }).done(function (data) {
+            loadVisitors(data);
+        });
+
+        var dataProcess = [];
+        function doPoll() {
+            $.ajax({
+                dataType: "json",
+                url: Benner.Page.getApplicationPath() + "api/Processes/Executing",
+            }).done(function (data) {
+                if (dataProcess.length > 8)
+                    dataProcess.splice(0, 1);
+                loadProcess(dataProcess, data);
+                setTimeout(doPoll, 5000);
+            });
+        }
+        doPoll();
+    });
+
+    var loadVisitors = function (data) {
+        AmCharts.shortMonthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+        var chart = AmCharts.makeChart("chartdivVisitantes", {
+            "type": "serial",
+            "theme": "light",
+            "marginRight": 40,
+            "marginLeft": 40,
+            "autoMarginOffset": 20,
+            "mouseWheelZoomEnabled": true,
+            "fontSize": 13,
+            "path": Benner.Page.getApplicationPath() + 'content/assets/plugins/amcharts',
+            "dataDateFormat": "YYYY-M",
+            "categoryField": "MonthYears",
+            "categoryAxis": {
+                "parseDates": true,
+                "dashLength": 1,
+                "minorGridEnabled": true
+            },
+            "graphs": [{
+                "id": "g1",
+                "balloonText": "[[CountVisitors]]",
+                "bullet": "round",
+                "bulletSize": 10,
+                "lineAlpha": 1,
+                "lineThickness": 3,
+                "title": "red line",
+                "valueField": "CountVisitors",
+            }],
+            "valueAxes": [{
+                "id": "v1",
+                "position": "left",
+            }],
+            "export": {
+                "enabled": false
+            },
+            "dataProvider": data
+        });
+    }
+
+    var loadProcess = function (dataProcess, data) {
+        var date = new Date();
+        var seconds = date.getSeconds();
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+
+        var instante = date.getHours() + ":" + date.getMinutes() + ":" + seconds;
+        dataProcess.push({
+            hour: instante,
+            process: data
+        });
+        var chart = AmCharts.makeChart("chartdivProcess", {
+            "type": "serial",
+            "theme": "light",
+            "categoryField": "hour",
+            "marginRight": 40,
+            "marginLeft": 40,
+            "autoMarginOffset": 20,
+            "mouseWheelZoomEnabled": true,
+            "fontSize": 13,
+            "processTimeout": -2,
+            "categoryAxis": {
+                "gridPosition": "start",
+                "labelRotation": 15
+            },
+            "trendLines": [],
+            "graphs": [{
+                "id": "AmGraph-1",
+                "balloonText": "[[hour]]",
+                "bullet": "round",
+                "bulletSize": 10,
+                "lineAlpha": 1,
+                "lineThickness": 3,
+                "title": "graph 1",
+                "valueField": "process",
+                "lineColor": "#8775a7"
+            }],
+            "guides": [],
+            "valueAxes": [{
+                "id": "ValueAxis-5",
+                "title": ""
+            }],
+            "allLabels": [],
+            "balloon": {},
+            "titles": [],
+            "dataProvider": dataProcess
+        });
+    }
+</script>

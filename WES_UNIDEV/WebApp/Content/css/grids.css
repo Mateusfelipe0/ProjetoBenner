@@ -1,0 +1,247 @@
+﻿/* ======== editable grid ========*/
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle;
+}
+
+div.table, .auto-numeric {
+    text-align: right;
+}
+
+.editable-grid-custom-column {
+    vertical-align: middle !important;
+}
+
+.normal-white-space {
+    white-space: normal !important;
+}
+
+.changed-record-column {
+    padding: 2px !important;
+}
+
+.changed-record {
+    float: left;
+    font-size: 14px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 2px;
+}
+/* ======== editable grid ========*/
+
+/*======== simple grid =========*/
+.space-command-record {
+    margin-right: 5px;
+}
+
+.table-scroll {
+    margin-bottom: 10px;
+}
+
+    .table-scroll > .table {
+        margin-bottom: 0px;
+    }
+
+.table a {
+    color: #000000;
+}
+
+.table tbody tr.active td {
+    color: #333;
+}
+
+.pagination > li > a {
+    color: #000000;
+}
+
+.table > thead > tr > th {
+    border-bottom: 0px;
+}
+
+.group-dropdown-menu .dropdown-menu.dropdown-menu-command-record > li > a {
+    padding: 6px 13px 6px 13px;
+    color: #555;
+}
+
+.multi-select-column {
+    text-align: center;
+    width: 60px;
+}
+
+.column-action {
+    width: 50px;
+    white-space: nowrap;
+}
+
+.column-image {
+    width: 100px;
+}
+
+.column-numeric {
+    width: 150px;
+}
+
+.column-datatime {
+    width: 150px;
+}
+
+.totalizer-cell {
+    font-weight: bold;
+}
+
+.column-image-body {
+    padding: 0px;
+    margin-bottom: 0px !important;
+}
+
+.anchor:hover {
+    cursor: pointer;
+}
+
+.table.table-hover.simple-grid td {
+    cursor: pointer;
+}
+
+.table.table-hover.simple-grid .no-selected td {
+    cursor: default;
+}
+
+.table.table-hover.simple-grid a.no-hiperlink:focus, .table.table-hover.simple-grid a.no-hiperlink:hover {
+    cursor: default;
+    text-decoration: none;
+}
+
+.table.table-hover.simple-grid .selectable-row a.no-hiperlink:focus, .table.table-hover.simple-grid .selectable-row a.no-hiperlink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.table-header {
+    white-space: nowrap;
+}
+
+    .table-header .title-header {
+        white-space: normal;
+        margin-right: 5px;
+        display: inline-block;
+    }
+
+    .table-header .title-icon-sort {
+        display: inline;
+        position: relative;
+    }
+
+.group-command-record {
+    margin-right: 5px;
+}
+
+.table tbody tr.active .btn-group.group-dropdown-menu button {
+    color: #fff;
+}
+
+.btn-group.drop-up > .dropdown-menu:before {
+    content: normal;
+}
+
+.btn-group.drop-up > .dropdown-menu:after {
+    content: normal;
+}
+
+a.nolink {
+    text-decoration: none;
+}
+
+.simple-grid .column-action .btn-group {
+    margin-right: 5px;
+}
+
+.simple-grid th:last-child{
+    position: relative;
+}
+
+.simple-grid th.export-link a:first-child, .simple-grid th.export-link span:first-child {
+    margin-right:25px;
+    display: inline-block;
+}
+
+.simple-grid th.export-link .table-header {
+    margin-right: 5px;
+}
+
+.simple-grid .excel-export-link{
+    padding: 0px;
+    position: absolute;
+    right: 0;
+    margin-right: 8px;
+}
+    .simple-grid .excel-export-link i {
+        font-size: 15px;
+	    font-style: normal;
+        display: inline-block;
+        margin-top: -1px;
+    }
+/*======== simple grid =========*/
+
+/* === filtro de grid === */
+.filter-search-form {
+    margin-bottom: 0px;
+    padding: 12px 14px;
+}
+
+
+.form-inline .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+    .form-inline .form-group > select {
+        display: inline;
+        width: 200px;
+    }
+
+.filter-form > .form-body {
+    padding: 0px;
+}
+
+.filter-form > .form-body > .form-group {
+    margin-bottom: 0px;
+}
+
+.filter-form > .form-body > .form-group:nth-of-type(n+2) {
+    margin-top: 10px;
+}
+
+.filter-search-form .col-md-12:last-of-type > .filter-form {
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .filter-form > .form-body > .form-group {
+        margin-top: 5px;
+    }
+
+    .filter-search-form .col-xs-12 + .col-xs-12 {
+        margin-top: 10px;
+    }
+
+    .filter-search-form .col-xs-10 + .col-xs-12 > .filter-simple-search {
+        margin-top: 10px;
+    }
+
+    .filter-actions > span {
+        display: block;
+        height: 3px;
+    }
+}
+
+.filter-actions {
+    padding-left: 0;
+    text-align: right;
+}
+
+/* === filtro de grid === */
+
+/* === Coluna de seleção ===*/
+.simple-grid td .mt-checkbox span, .editable-grid td .mt-checkbox span {
+    margin-top: -5px;
+}
+/* === Coluna de seleção ===*/

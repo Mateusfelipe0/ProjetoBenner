@@ -1,0 +1,25 @@
+﻿@{ 
+    var link = "~/SiteSettings/Datasources/Form.aspx?p=1&imp=1&imn=1";
+    bool isNew = true;
+    if(Model != null && !Model["ENTIDADEVISAO"].IsNull && Model["ENTIDADEVISAO"].GetString().Contains(".DATASOURCE.GRID"))
+    {
+        isNew = !isNew;
+        link += "&ev=" + Model["ENTIDADEVISAO"].GetString();
+    }
+    if(!string.IsNullOrEmpty(Request.QueryString["pw"]))
+    {
+        link += "&pw=" + Request.QueryString["pw"];
+    }
+}
+
+
+<a class="btn blue" href="@Url.Content(link)">
+    @if (isNew)
+    {
+        <span>Nova consulta</span>
+    }
+    else
+    {
+        <span>Editar consulta</span>
+    }
+</a>

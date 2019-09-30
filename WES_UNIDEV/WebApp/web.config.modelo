@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <section name="glimpse" type="Glimpse.Core.Configuration.Section, Glimpse.Core" />
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+  </configSections>
+  <!--secao de configuracao da benner-->
+  <appSettings>
+    <add key="defaultSystemInstanceName" value="" />
+    <add key="defaultSuperServerSystemName" value="" />
+    <add key="anonymousUserName" value="" />
+    <add key="anonymousEncryptedPassword" value="" />
+    <add key="defaultSuperServerHost" value="" />
+    <add key="tempDir" value="C:\TEMP\" />
+    <add key="maxFileSizeInKB" value="4096" />
+    <add key="keepAliveInMinutes" value="30" />
+    <add key="configurationRequired" value="true" />
+    <add key="developmentEnvironment" value="false" />
+    <add key="allowedFileExtensions" value="png, jpg, jpeg, gif, bmp, pdf, doc, docx, xls, xlsx, rtf, txt, csv, dot, dotx, ppt, pptx, pps, ppsx, pot, potx, xps" />
+    <add key="webConfigVersion" value="19000" />
+    <add key="validateFileSignature" value="True" />
+    <add key="Glimpse:DisableAsyncSupport" value="true" />
+    <add key="PreserveLoginUrl" value="true" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+    <add key="sourceControlWithExclusiveLock" value="false" />
+    <add key="vs:EnableBrowserLink" value="false" />
+    <add key="loggingServerActive" value="false" />
+    <add key="loggingServerAddress" value="http://localhost:9200" />
+    <add key="owin:AppStartup" value="WebApp.Startup" />
+    <add key="ServerIsVolatile" value="false" />
+  </appSettings>
+  <!-- Permitir acesso a usuários não autenticados para páginas publicas -->
+  <location path="Public">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Descomentar esse código para permitir que os serviços de interface funcionem para páginas publicas.
+       As páginas devem ficar dentro da pasta Public.
+  <location path="api/search">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+
+  <location path="PathField.asmx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+
+  <location path="GetImage.ashx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+
+  <location path="DefaultLookupSearch.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+
+  <location path="Upload.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+
+  <location path="UploadImage.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  
+  <location path="DownloadFile.ashx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  
+  <location path="ModalClose.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  -->
+  <!-- Permitir acesso a usuários não autenticados para aplicar o tema na página de login -->
+  <location path="App_Themes">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- SOMENTE EM AMBIENTE DE DESENVOLVIMENTO, FOI LIBERADO ACESSO PARA OS TESTES AUTOMATIZADOS EM SILVERLIGHT -->
+  <location path="ServiceHost">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados para os serviços desenvolvidos pelos aplicativos -->
+  <location path="App_Services">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados para o catálogo de API do produto /swagger -->
+  <location path="swagger">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- As APIs não devem exigir FormsAuthentication -->
+  <location path="api">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Página de Warmup da aplicação -->
+  <location path="Warmup.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Página de authorização de acesso para fluxo Authorization Code do OAuth2 -->
+  <location path="Authorize.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados para o serviço de Integrator.asmx -->
+  <location path="Integrator.asmx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados na página de Versão -->
+  <location path="Version.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados para recuperar a senha -->
+  <location path="PasswordRecovery.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados na página de erro -->
+  <location path="Error.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados na página de status -->
+  <location path="Status.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!-- Permitir acesso a usuários não autenticados na página de RequestTime -->
+  <location path="RequestTime.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!--configurações da página de administracao-->
+  <location path="Admin.aspx">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <!--Tornar o serviço do glimpse publico-->
+  <location path="Glimpse.axd">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <location path="Content">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <location path="manifest.json">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <location path="favicon">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <location path="Ping">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+  <location path="apis">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>	
+  <location path="NonAuthenticatedServiceHost">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+   </location>	 
+  <system.web>
+    <httpCookies httpOnlyCookies="true" />
+    <trace enabled="false" requestLimit="10" pageOutput="false" traceMode="SortByTime" localOnly="true" />
+    <sessionState mode="InProc" timeout="5" cookieless="UseCookies" cookieName="Session_NomeDoSistemaNoBServer"/>
+    <!-- session@redis -->
+    <!-- 
+      <sessionState mode="Custom" customProvider="MySessionStateStore" cookieless="UseCookies" cookieName="Session_NomeDoSistemaNoBServer" timeout="5" >
+        <providers>
+          <add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="localhost" port="6379" accessKey="" ssl="false"
+               redisSerializerType="Benner.Tecnologia.Wes.Components.WebApp.Session.SessionBinarySerializer, Benner.Tecnologia.Wes.Components.WebApp" />
+        </providers>
+      </sessionState>
+    -->
+    <sessionPageState historySize="30" />
+    <globalization requestEncoding="utf-8" responseEncoding="utf-8" culture="pt-BR" />
+    <authentication mode="Forms">
+      <forms name="WesAuth_NomeDoSistemaNoBServer" loginUrl="~/Login" protection="All" timeout="5" slidingExpiration="true" cookieless="UseCookies" enableCrossAppRedirects="false" />
+    </authentication>
+    <membership defaultProvider="BennerMembershipProvider">
+      <providers>
+        <!-- MembershipProvider para usuário de base Benner -->
+        <add name="BennerMembershipProvider" type="Benner.Tecnologia.Common.BennerMembershipProvider, Benner.Tecnologia.Common2" />
+      </providers>
+    </membership>
+    <authorization>
+      <deny users="?" />
+    </authorization>
+    <compilation debug="false" numRecompilesBeforeAppRestart="100" targetFramework="4.6.2" />
+    <httpRuntime executionTimeout="600" maxRequestLength="20480" requestValidationMode="2.0" requestValidationType="Benner.Tecnologia.Wes.Components.CustomRequestValidation" targetFramework="4.6.2" />
+    <pages controlRenderingCompatibilityVersion="3.5" enableSessionState="true" enableViewState="true" enableViewStateMac="true" enableEventValidation="false" validateRequest="true" masterPageFile="~/Default.master" theme="Default" asyncTimeout="7" clientIDMode="AutoID">
+      <namespaces>
+        <add namespace="System.Web.Helpers" />
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+        <add namespace="System.Web.WebPages" />
+      </namespaces>
+    </pages>
+    <httpModules>
+      <add name="Glimpse" type="Glimpse.AspNet.HttpModule, Glimpse.AspNet" />
+    </httpModules>
+    <httpHandlers>
+      <add path="glimpse.axd" verb="GET" type="Glimpse.AspNet.HttpHandler, Glimpse.AspNet" />
+    </httpHandlers>
+  </system.web>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules>
+      <add name="MaxRequestModule" type="Benner.Tecnologia.Wes.Components.MaxRequestModule" />
+      <add name="Glimpse" type="Glimpse.AspNet.HttpModule, Glimpse.AspNet" preCondition="integratedMode" />
+      <remove name="WebDAVModule" />
+      <!-- session@redis -->
+      <!-- 
+        <remove name="Session" />
+        <add name="Session" type="Microsoft.AspNet.SessionState.SessionStateModuleAsync, Microsoft.AspNet.SessionState.SessionStateModule, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode" />
+       -->
+    </modules>
+    <handlers>
+      <remove name="WebDAV" />
+      <add name="ExtensionlessUrl" path="api/*" verb="PUT,PATCH,DELETE" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+      <add name="ChartImageHandler" preCondition="integratedMode" verb="GET,HEAD,POST" path="ChartImg.axd" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler,System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <add name="CustomArtifactsHandler" verb="GET" path="favicon" type="Benner.Tecnologia.Wes.Components.CustomArtifactsHandler,Benner.Tecnologia.Wes.Components" />
+      <add name="Glimpse" path="glimpse.axd" verb="GET" type="Glimpse.AspNet.HttpHandler, Glimpse.AspNet" preCondition="integratedMode" />
+    </handlers>
+    <httpProtocol>
+      <customHeaders>
+        <remove name="X-Powered-By" />
+        <!-- Para funcionar em IFrame, basta descomentar as duas linhas abaixo. Substituir http://localhost pelo domínio do site com o IFrame que irá carregar o WES. -->
+        <!--<add name="X-Frame-Options" value="ALLOW-FROM http://localhost" />-->
+        <!--<add name="Content-Security-Policy" value="default-src * data: webpack-internal: 'unsafe-inline' 'unsafe-eval'; script-src * blob: webpack-internal: 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: webpack-internal: blob: 'unsafe-inline'; frame-src *; style-src * webpack-internal: 'unsafe-inline';frame-ancestors *;"/>-->
+        <add name="X-UA-Compatible" value="IE=Edge" />
+        <add name="X-Frame-Options" value="SAMEORIGIN" />
+      </customHeaders>
+    </httpProtocol>
+    <security>
+      <requestFiltering>
+        <verbs allowUnlisted="false">
+          <add verb="POST" allowed="true" />
+          <add verb="PUT" allowed="true" />
+          <add verb="DELETE" allowed="true" />
+          <add verb="GET" allowed="true" />
+          <add verb="HEAD" allowed="true" />
+          <add verb="OPTIONS" allowed="true" />
+          <add verb="PATCH" allowed="true" />
+        </verbs>
+        <hiddenSegments>
+          <add segment="Excluded" />
+          <add segment="Artifacts" />
+        </hiddenSegments>
+      </requestFiltering>
+    </security>
+    <staticContent>
+      <remove fileExtension=".json" />
+      <remove fileExtension=".woff2" />
+      <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+      <clientCache cacheControlCustom="private" cacheControlMaxAge="30.00:00:00" cacheControlMode="UseMaxAge" />
+    </staticContent>
+  </system.webServer>
+  <system.serviceModel>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" />
+  </system.serviceModel>
+  <glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd">
+    <tabs>
+      <ignoredTypes>
+        <add type="Glimpse.AspNet.Tab.Session, Glimpse.AspNet" />
+        <add type="Glimpse.AspNet.Tab.Cache, Glimpse.AspNet" />
+        <add type="Glimpse.AspNet.Tab.Environment, Glimpse.AspNet" />
+        <add type="Glimpse.AspNet.Tab.Configuration, Glimpse.AspNet" />
+        <add type="Glimpse.AspNet.Tab.Server, Glimpse.AspNet" />
+      </ignoredTypes>
+    </tabs>
+    <runtimePolicies>
+      <ignoredTypes>
+        <add type="Glimpse.AspNet.Policy.LocalPolicy, Glimpse.AspNet" />
+      </ignoredTypes>
+    </runtimePolicies>
+  </glimpse>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" culture="neutral" publicKeyToken="30ad4fe6b2a6aeed" />
+        <bindingRedirect oldVersion="0.0.0.0-11.0.0.0" newVersion="11.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Antlr3.Runtime" publicKeyToken="eb42632606e9261f" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.5.0.2" newVersion="3.5.0.2" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Reactive.Core" publicKeyToken="94bc3704cddfc263" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.3000.0" newVersion="3.0.3000.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.0.0" newVersion="4.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IO.RecyclableMemoryStream" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.2.2.0" newVersion="1.2.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.1.2" newVersion="4.1.1.2" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.1.0" newVersion="4.1.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.IO" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.1.0" newVersion="4.1.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.IO.Compression" publicKeyToken="b77a5c561934e089" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.2.0" newVersion="4.1.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime.InteropServices" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.0.0" newVersion="4.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Reflection" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.1.0" newVersion="4.1.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.IO.FileSystem" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.2.0" newVersion="4.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime.Extensions" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.1.0" newVersion="4.1.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Security.Cryptography.Algorithms" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.0.0" newVersion="4.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.IO.FileSystem.Primitives" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.2.0" newVersion="4.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Security.Cryptography.Primitives" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Xml.XPath.XDocument" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.2.0" newVersion="4.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Console" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Diagnostics.StackTrace" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.3.0" newVersion="4.0.3.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Collections.Immutable" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.2.1.0" newVersion="1.2.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>

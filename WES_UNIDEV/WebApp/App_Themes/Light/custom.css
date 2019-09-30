@@ -1,0 +1,68 @@
+﻿@import url("../../content/assets/css/themes/light.min.css");
+
+.page-header.navbar .page-logo .logo {
+    background-image: url(../../content/img/logo-benner-branca.png);
+}
+
+.menu-do-desenvolvedor {
+    background-color: #9099a3 !important;
+}
+
+.usuario {
+    background-color: #3FD5C0 !important;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+}
+
+.usuario:hover {
+    background-color: #3FD5C0 !important;
+    color: #fff;
+}
+/* === Pesquisa ===*/
+#searcher > a:hover {
+    background-color: #9099a3;
+}
+
+    #searcher > a > i {
+        color: #bbc1c8;
+        font-size: 17px;
+    }
+
+    #searcher:hover > a > i {
+        color: #e5e7ea;
+    }
+/* === Pesquisa ===*/
+/* === Help F1 ===*/
+#helpDocumentation > a:hover {
+    background-color: #9099a3;
+}
+
+    #helpDocumentation > a > i {
+        color: #bbc1c8;
+        font-size: 17px;
+    }
+
+    #helpDocumentation:hover > a > i {
+        color: #e5e7ea;
+    }
+/* === Help F1 ===*/
+/* === ChatBot ===*/
+#chat-bot > a:hover,
+#chat-bot > a:focus { background-color: #9099a3; }
+#chat-bot > a > i { color: #bbc1c8; }
+#chat-bot > a:hover > i,
+#chat-bot > a:focus > i { color: #e5e7ea; }
+.page-quick-sidebar-wrapper { background: #fff; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a {
+	color: #555 !important;
+	border-bottom-color: #e87e04 !important;
+}
+.page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .break { background: rgba(0,0,0,0.2); }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message { background: #eee; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .datetime,
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .name { color: #777; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .body { color: #555 !important; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow { border-right-color: #eee !important; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow { border-left-color: #eee !important; }
+/* === ChatBot ===*/

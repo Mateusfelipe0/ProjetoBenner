@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.WebReportService" %>

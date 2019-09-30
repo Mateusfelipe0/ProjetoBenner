@@ -1,0 +1,109 @@
+{
+  "name": "wes",
+  "version": "19.0.0",
+  "description": "Web Enterprise Suite",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --env.development",
+    "prod": "webpack --env.production",
+    "test": "jest --reporters=default",
+    "debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
+    "test-integration": "jest --ci --reporters=jest-junit"
+  },
+  "homepage": "http://dev.benner.com.br/",
+  "keywords": [
+    "wes",
+    "benner",
+    "web",
+    "enterprise",
+    "suite"
+  ],
+  "author": "Benner",
+  "dependencies": {
+    "ace-diff": "^2.3.0",
+    "amcharts3": "^3.21.12",
+    "async": "^2.6.1",
+    "autonumeric": "^1.9.46",
+    "babel-polyfill": "^6.26.0",
+    "blockui-npm": "^1.0.0",
+    "bloodhound-js": "^1.2.2",
+    "bootbox": "^4.4.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-hover-dropdown": "^2.2.1",
+    "bootstrap-tagsinput": "^0.7.1",
+    "bootstrap-tour": "^0.12.0",
+    "bootstrap-wizard": "^1.4.2",
+    "brace": "^0.11.1",
+    "codemirror": "^5.37.0",
+    "datatables": "^1.10.18",
+    "datatables-bootstrap": "0.0.1",
+    "devextreme": "^18.1.4",
+    "devextreme-intl": "^18.1.4",
+    "easy-pie-chart": "^2.1.7",
+    "fancybox": "^2.1.7",
+    "font-awesome": "^4.7.0",
+    "headjs": "^1.0.3",
+    "inputmask": "^3.3.11",
+    "jquery": "1.12.4",
+    "jquery-minicolors": "^2.1.10",
+    "jquery-slimscroll": "^1.3.8",
+    "jquery-validation": "^1.14.0",
+    "jquery.initialize": "^1.3.0",
+    "ladda": "^1.0.6",
+    "leaflet": "^1.3.1",
+    "leaflet.awesome-markers": "^2.0.5",
+    "lodash": "^4.17.5",
+    "simple-line-icons-webfont": "^4.0.3",
+    "summernote": "^0.8.10",
+    "toastr": "^2.1.4",
+    "typeahead": "^0.2.2",
+    "vue": "^2.5.17",
+    "vue-resource": "^1.5.1",
+    "vuex": "^3.1.0",
+    "webpack-jquery-ui": "1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@vue/test-utils": "^1.0.0-beta.28",
+    "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "css-loader": "^0.28.11",
+    "file-exists": "^5.0.1",
+    "file-loader": "^1.1.11",
+    "jest": "^23.6.0",
+    "jest-junit": "^6.2.1",
+    "mini-css-extract-plugin": "^0.2.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
+    "vue-jest": "^3.0.2",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^1.5.3",
+    "webpack-merge": "^4.1.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "testMatch": [
+      "<rootDir>/Content/dist/tests.min.js"
+    ],
+    "reporters": [
+      "jest-junit"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "Test in Jest",
+    "output": "../../../TestResults/jest-test-results.xml"
+  }
+}

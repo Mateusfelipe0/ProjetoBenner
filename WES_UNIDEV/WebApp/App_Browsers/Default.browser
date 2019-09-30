@@ -1,0 +1,13 @@
+﻿<browsers>
+    <browser refID="Default">
+        <controlAdapters>
+           <adapter controlType="System.Web.UI.Page" adapterType="Benner.Tecnologia.Wes.Components.PageStateAdapter" />
+           <adapter controlType="System.Web.UI.WebControls.Label" adapterType="Benner.Tecnologia.Wes.Components.LabelControlAdapter" />
+		       <adapter controlType="System.Web.UI.WebControls.Button" adapterType="Benner.Tecnologia.Wes.Components.ButtonControlAdapter" />
+		       <adapter controlType="System.Web.UI.WebControls.LinkButton" adapterType="Benner.Tecnologia.Wes.Components.LinkButtonControlAdapter" />
+		       <adapter controlType="System.Web.UI.WebControls.DropDownList" adapterType="Benner.Tecnologia.Wes.Components.DropDownListControlAdapter" />
+           <adapter controlType="System.Web.UI.WebControls.CheckBox" adapterType="Benner.Tecnologia.Wes.Components.CheckBoxControlAdapter" />
+           <adapter controlType="System.Web.UI.WebControls.RadioButton" adapterType="Benner.Tecnologia.Wes.Components.RadioButtonControlAdapter" />
+        </controlAdapters>
+    </browser>
+</browsers>

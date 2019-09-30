@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>SELECIONAR_TESTES</Id>
+  <Title>Acessar selecionador de testes</Title>
+  <Level>Benner</Level>
+  <Reports />
+  <Pages>
+    <string>PAGES_TESTCOLLECTION_SELECIONARTESTES</string>
+  </Pages>
+  <Components>
+    <string>Benner.AutomatedTests.Server.Entities.Business.AppTestProfileBusiness|GETAPPPROFILES</string>
+    <string>Benner.AutomatedTests.Server.Entities.Business.FeatureBusiness|GETFEATURES</string>
+    <string>Benner.AutomatedTests.Server.Entities.Business.ModuleBusiness|GETMODULES</string>
+    <string>Benner.AutomatedTests.Server.Entities.Business.TestBusiness|GETTESTS</string>
+    <string>Benner.AutomatedTests.Server.Entities.Business.TestBusiness|RUNTESTS</string>
+  </Components>
+  <Operations>
+    <string>TESTAGENTCONFIG|DELETE</string>
+    <string>TESTAGENTCONFIG|INSERT</string>
+    <string>TESTAGENTCONFIG|UPDATE</string>
+    <string>TESTAGENTCONFIG|VIEW</string>
+    <string>TESTAGENTINSTALLATION|DELETE</string>
+    <string>TESTAGENTINSTALLATION|INSERT</string>
+    <string>TESTAGENTINSTALLATION|UPDATE</string>
+    <string>TESTAGENTINSTALLATION|VIEW</string>
+    <string>TESTAGENTSTATUS|DELETE</string>
+    <string>TESTAGENTSTATUS|INSERT</string>
+    <string>TESTAGENTSTATUS|UPDATE</string>
+    <string>TESTAGENTSTATUS|VIEW</string>
+    <string>TESTCOLLECTION|DELETE</string>
+    <string>TESTCOLLECTION|INSERT</string>
+    <string>TESTCOLLECTION|UPDATE</string>
+    <string>TESTCOLLECTION|VIEW</string>
+    <string>TESTDEFINITION|DELETE</string>
+    <string>TESTDEFINITION|INSERT</string>
+    <string>TESTDEFINITION|RUNTESTS</string>
+    <string>TESTDEFINITION|UPDATE</string>
+    <string>TESTDEFINITION|VIEW</string>
+    <string>TESTEXECUTION|DELETE</string>
+    <string>TESTEXECUTION|INSERT</string>
+    <string>TESTEXECUTION|UPDATE</string>
+    <string>TESTEXECUTION|VIEW</string>
+    <string>TESTFEATURE|DELETE</string>
+    <string>TESTFEATURE|INSERT</string>
+    <string>TESTFEATURE|UPDATE</string>
+    <string>TESTFEATURE|VIEW</string>
+    <string>TESTMODULE|DELETE</string>
+    <string>TESTMODULE|INSERT</string>
+    <string>TESTMODULE|UPDATE</string>
+    <string>TESTMODULE|VIEW</string>
+    <string>TESTPARAMS|DELETE</string>
+    <string>TESTPARAMS|INSERT</string>
+    <string>TESTPARAMS|UPDATE</string>
+    <string>TESTPARAMS|VIEW</string>
+  </Operations>
+  <Process />
+  <Tasks />
+</TaskPortable>

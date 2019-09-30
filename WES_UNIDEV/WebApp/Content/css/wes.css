@@ -1,0 +1,860 @@
+/*
+    Arquivo de css da Benner Tecnologia
+
+    ------------------------------ Importante ------------------------------
+    Tente utilizar nomes de classe conforme a convenção descrita no arquivo abaixo:
+    http://thesassway.com/advanced/modular-css-naming-conventions
+    ------------------------------ Importante ------------------------------
+*/
+
+/* === Masterpage === */
+.bg-white {
+    background-color: #FFF !important;
+}
+
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu {
+    border-left: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-right: solid 1px #ccc;
+}
+
+.page-header.navbar .top-menu .navbar-nav .dropdown-toggle {
+    height: 50px;                                
+}
+
+.page-header.navbar .top-menu .nav.navbar-nav > li.dropdown.dropdown-user-wes > .dropdown-menu {
+    width: inherit;
+    max-width: inherit;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li p {
+    padding: 10px;
+    background-color: #eee;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #444;
+}
+
+.page-header.navbar .page-logo .logo {
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 170px;
+    height: 46px;
+}
+
+@media (max-width: 992px) {
+    .page-header.navbar .page-logo {
+        width: 200px;
+    }
+}
+
+@media (max-width: 991px) {
+    .page-container-bg-solid.page-full-width .page-bar {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+}
+
+.page-content-wrapper .page-content {
+    padding-top: 10px !important;
+}
+
+.page-container-bg-solid .page-title {
+    margin-top: 5px;
+}
+
+#menu-do-desenvolvedor-context {
+    z-index: 12000 !important;
+}
+
+#menu-do-desenvolvedor-context h3 {
+    margin-top: 5px;
+    padding-left: 6px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #555;
+}
+
+.page-header.navbar.navbar-fixed-top .hor-menu .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.page-footer .page-footer-inner {
+    display: block;
+    float: none;
+}
+
+.page-footer .page-footer-inner > a {
+	color: inherit;
+}
+/* === Masterpage === */
+/*========= botão novo item =========*/
+.new-item {
+    margin-bottom: 15px;
+}
+
+    .new-item .dropdown-menu i {
+        font-size: 20px;
+        color: grey;
+    }
+
+    .new-item ul > li > a {
+        padding: 12px;
+        white-space: normal;
+    }
+
+    .new-item button {
+        min-width: 180px;
+    }
+/*=========botão novo item=========*/
+
+/*======= comandos do widget ========*/
+.form .form-actions.top {
+    margin-bottom: 5px;
+}
+
+.form .form-actions {
+    padding: 5px 5px;
+}
+
+.no-border {
+    border: 0px !important;
+}
+
+.commands-bar {
+    padding-left: 0px !important;
+}
+
+.predef-action {
+    margin-bottom: 3px;
+}
+
+.custom-action {
+    margin-bottom: 3px;
+}
+
+.nested-menu {
+    margin-bottom: 3px;
+}
+
+i.btn-action {
+    padding-right: 8px !important;
+}
+
+    i.btn-action.icon-right {
+        float: right;
+        padding: 4px 0px 0px 8px !important;
+    }
+
+.dropdown-menu > li > a {
+    padding-right: 15px;
+    white-space: normal;
+}
+
+.break-lines > li > a {
+    white-space: normal;
+}
+
+.dropdown-menu-left {
+    margin-left: -100% !important;
+    left: 0 !important;
+}
+
+/*======= comandos do widget ========*/
+
+/*======== widgets de menu =========*/
+.list-unstyled li {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+    .list-unstyled li a {
+        color: #767F88 !important;
+    }
+
+        .list-unstyled li a:hover {
+            color: #000 !important;
+            text-decoration: none;
+        }
+
+h3 > i {
+    font-size: 20px !important;
+}
+/*======== widgets de menu =========*/
+
+/* === modal ===*/
+.modal-header {
+    border-bottom-color: transparent !important;
+}
+
+.modal-body {
+    padding-top: 0 !important;
+}
+
+.page-header-fixed.page-full-width.bg-white .page-container {
+    margin-top: 0;
+}
+
+.page-container-bg-solid.page-full-width .page-content {
+    background-color: #fff;
+}
+
+.page-full-width .page-content-wrapper .page-content {
+    padding-top: 0 !important;
+}
+
+.modal-commands {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.page-header-fixed.page-content-white .page-content .page-bar {
+    border-bottom: 0px;
+}
+/* === modal ===*/
+
+.widgetFilter::-ms-clear {
+    display: none;
+}
+
+/* === empresa e filial === */
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject {
+    margin-left: 0;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .message {
+    margin-left: 0;
+}
+/* === empresa e filial === */
+
+/* === footer ===*/
+.environment {
+    left: 25%;
+    width: 50%;
+    cursor: help;
+}
+
+.environment-text {
+    color: white;
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    height: 36px;
+}
+
+.environment-slider {
+    background-color: #d64635;
+    height: 7px;
+}
+
+.environment-benner {
+    background-color: #d64635;
+}
+
+.environment-client {
+    background-color: #515151;
+}
+/* === footer ===*/
+
+/* === progress ===*/
+div.progress-box {
+    position: fixed;
+    background-color: #fff;
+    top: 40%;
+    left: 43%;
+    padding: 10px;
+    border: 1px solid #999;
+    z-index: 999999999;
+    display: none;
+}
+/* === progress ===*/
+
+/* === lookup search ===*/
+.modal-open .datepicker {
+    z-index: auto !important;
+}
+
+.search-panel {
+}
+
+    .search-panel .table-responsive {
+        overflow-y: auto;
+    }
+
+.top-align {
+    vertical-align: top;
+}
+/* === lookup search ===*/
+
+/* === request confirmation === */
+.alert-request-confirmation > p + p {
+    margin-top: 15px;
+}
+/* === request confirmation === */
+
+/* === error page ===*/
+.errorTitlePanel {
+    color: #b94a48;
+}
+
+.errorDetails {
+    min-height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+    height: 250px;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-family: Lucida Console;
+    font-size: 12px;
+}
+
+.error-back {
+    color: #333333;
+    text-decoration: underline;
+}
+
+.emoticon {
+    font-size: 72px;
+    vertical-align: top;
+    float: left;
+    padding-right: 50px;
+}
+
+.errorGuidPanel {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.errorMessage {
+    background-color: #b94a48;
+    border-color: #e3e3e3;
+}
+/* === error page ===*/
+
+/* === menu sidebar ===*/
+.sidebar-new-button {
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.page-sidebar .page-sidebar-menu .new-item-open {
+    display: block;
+    text-align: center;
+}
+
+.page-sidebar .page-sidebar-menu .new-item-closed {
+    display: none;
+}
+
+.page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .new-item-open {
+    display: none;
+}
+
+.page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .new-item-closed {
+    display: block;
+}
+
+    .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .new-item-closed > a {
+        background-color: #26a69a;
+        color: #fff;
+    }
+
+        .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .new-item-closed > a > i {
+            color: #fff;
+        }
+
+.page-sidebar.navbar-collapse.collapse .sidebar-toggler-wrapper {
+    margin-bottom: 15px;
+}
+
+.new-item-open .new-item .list-unstyled a {
+    display: block;
+    font-weight: 300;
+    line-height: 18px;
+}
+/* === menu sidebar ===*/
+
+/* === message panel === */
+.alert a {
+    color: #a94442;
+}
+/* === message panel === */
+
+/* === responsive === */
+.table-scrollable, .table-responsive {
+    border-width: 0px;
+}
+/* === responsive === */
+
+/* === select2 === */
+/*.input-group-lookup .select2-container.form-control {
+    width: calc(100% - 41px);
+}
+
+.input-group-lookup.without-border-spacing .select2-container.form-control {
+    width: calc(100% - 85px);
+}
+
+.input-group-lookup .btn-default {
+    border-color: #E5E5E5;
+}
+
+.input-group-btn.top-align {
+    display: inline-table;
+}*/
+/* === select2 === */
+
+/* === TopBar === */
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user-wes .dropdown-menu li.roles > a i {
+    width: 15px;
+    display: inline-block;
+    margin-right: 9px;
+}
+
+.dropdown.dropdown-extended.dropdown-tasks > a > i.icon-bar-chart {
+    top: 0px;
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list.user-roles > li.roles > a {
+    white-space: nowrap;
+}
+/* === TopBar === */
+
+/* === Atualização de ambiente === */
+.outdated-system {
+    padding: 15px;
+    margin: -10px -20px 10px;
+}
+
+.modal-page .outdated-system {
+    margin: 0px -20px 10px;
+}
+/* === Atualização de ambiente === */
+
+/* === Widget ==== */
+.widget .portlet.light {
+    margin-bottom: 12px;
+}
+
+.widget.minimized .portlet.light {
+    padding-bottom: 0px;
+}
+
+.widget.minimized .portlet > .portlet-title {
+    border-bottom: 0px;
+}
+
+.widget.minimized .portlet.light > .portlet-title > .caption {
+    padding: 10px 0;
+}
+/* === Widget ==== */
+
+.caption.collapsible {
+    cursor: pointer;
+}
+
+.form .form-actions.bottom {
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+.page-container-bg-solid .page-bar {
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+/* ====== instalação de artefatos ====== */
+.page-spinner-bar > div,
+.block-spinner-bar > div {
+    background: #357bdc !important;
+}
+
+.label-builder {
+    color: #FFF;
+    background-color: #b1b1b1;
+}
+
+.label-tecnologia {
+    color: #FFF;
+    background-color: #95A5A6;
+}
+
+.label-benner {
+    color: #FFF;
+    background-color: #5C9BD1;
+}
+
+.label-vertical {
+    color: #FFF;
+    background-color: #67809F;
+}
+
+.label-especifico {
+    color: #FFF;
+    background-color: #4B77BE;
+}
+
+.label-cliente {
+    color: #FFF;
+    background-color: #4DB3A2;
+}
+
+.label-usuario {
+    color: #FFF;
+    background-color: #67809F;
+}
+/* ====== instalação de artefatos ====== */
+
+/* === locked app page ===*/
+.label-locked {
+    color: #31708F;
+}
+/* === locked app page ===*/
+
+/* === Menu Context ===*/
+.message-menu-context {
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+}
+
+.dropdown-menu > .divider.divider-smaller {
+    margin: 3px 0;
+}
+/* === Menu Context ===*/
+
+
+/* === DatePicker ===*/
+.datepicker-orient-top {
+    z-index: 9999;
+}
+/* === DatePicker ===*/
+
+/* === CheckBox ===*/
+.mt-checkbox-outline > span {
+    background-color: #fff !important;
+}
+
+.mt-checkbox-inline > .boolean-control span {
+    margin-top: 0px;
+}
+/* === CheckBox ===*/
+/* === Help F1 ===*/
+#helpDocumentation {
+    margin: 0;
+    padding: 0 4px;
+    height: 50px;
+    display: inline-block;
+}
+
+    #helpDocumentation > a {
+        margin: 0;
+        padding: 19px 10px 10px;
+        height: 50px;
+    }
+/* === Help F1 ===*/
+
+/* === Desenvolvimento ===*/
+
+.widget:not(:hover) .developer-toolbar{
+    display:none;
+}
+
+.widget:hover .developer-toolbar{
+    display:block;
+}
+
+.developer-item-shadow {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
+}
+
+.developer-toolbar, .tiles .wes-tile .developer-toolbar-tile {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9994;
+}
+
+.developer-toolbar .dropdown-menu {
+    margin-top: 0px;
+}
+
+.resize-width-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -0px;
+    z-index: 9993;
+    text-align: center;
+}
+
+.resize-width-handle {
+    margin: auto;
+}
+
+.resize-height-container {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9993;
+}
+
+.resize-height-handle {
+    margin: auto;
+}
+
+.new-widget-helper {
+    height: 70px;
+    border: 2px dashed #CCC;
+    cursor: pointer;
+}
+
+
+.float-action-buttons {
+    margin: 1em;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9994;
+}
+
+    .float-action-buttons:hover .buttons:not(:last-of-type) {
+        width: 40px;
+        height: 40px;
+        margin: 15px auto 0;
+        opacity: 1;
+    }
+
+    .float-action-buttons:hover .rotate {
+        background-image: url("../img/float-action-button-ok.png");
+        transform: rotate(0deg);
+        background-color: #32c5d2;
+    }
+
+.buttons {
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin: 20px auto 0;
+    text-decoration: none;
+    position: relative;
+    border-radius: 50% !important;
+    box-shadow: 0px 5px 11px -2px rgba(0, 0, 0, 0.18), 0px 4px 12px -7px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: .2s;
+}
+
+    .buttons:nth-last-of-type(2) {
+        transition-delay: 20ms;
+    }
+
+    .buttons:nth-last-of-type(1) {
+        width: 56px;
+        height: 56px;
+        opacity: 1;
+    }
+
+    .buttons:nth-last-of-type(2) {
+        background: #BBB url("../img/float-action-button-cancel.png") center no-repeat;
+    }
+
+    .buttons:hover {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+    }
+
+    .buttons span {
+        width: 100%;
+        height: 100%;
+        border-radius: 50% !important;
+    }
+
+        .buttons span.rotate {
+            background: #32c5d2 url("../img/float-action-button-save.png") center no-repeat;
+            position: absolute;
+            transform: rotate(90deg);
+            transition: .3s;
+        }
+
+[tooltip]:before {
+    content: attr(tooltip);
+    background: #585858;
+    padding: 5px 7px;
+    margin-right: 10px;
+    border-radius: 2px;
+    color: #FFF;
+    font: 500 12px "Open Sans";
+    white-space: nowrap;
+    position: absolute;
+    bottom: 20%;
+    right: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+
+[tooltip]:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+.chart-type{
+    cursor: pointer;
+    display:inline-block;
+    padding: 5px;
+}
+
+.chart-type:hover{
+    background-color: #E9EDEF;
+}
+
+.chart-type.selected{
+    background-color: #E1E5EC;
+}
+
+/* === Desenvolvimento ===*/
+/* === Widget Tile ===*/
+.wes-tile div.wes-flat-tile a.command-name {
+    text-decoration: none;
+}
+
+.wes-tile span.widget-thumb-subtitle.tilepreffix, .wes-tile .status-title.tilestatus{
+    white-space: pre;
+}
+
+.wes-tile a:not([href]) {
+    cursor: default;
+}
+
+.wes-tile .wes-default-tile, .wes-tile .wes-progress-tile, .wes-tile .wes-flat-tile {
+    height: 130px !important;
+    margin-bottom: 12px;
+}
+
+.wes-tile .wes-flat-tile {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.wes-tile .wes-default-tile .details {
+    margin-top: 17px;
+}
+/* === Widget Tile ===*/
+
+/* === Web Tour === */
+.popover-navigation button {
+    font-family: "Open Sans";
+}
+
+.popover.tour {
+    z-index: 9999 !important;
+}
+/* === Web Tour === */
+
+
+/* === Web Tour === */
+.popover-navigation button {
+    font-family: "Open Sans";
+}
+
+.popover.tour{
+    z-index: 9999 !important;
+}
+/* === Web Tour === */
+
+
+/* === CSS textarea disable resize === */
+textarea.form-control {
+    min-height: 34px;
+    max-width: 100%;
+}
+
+textarea.noresize {
+    resize: none;
+}
+
+textarea.vresize {
+    resize: vertical;
+}
+
+textarea.hresize {
+    resize: horizontal;
+}
+/* === CSS textarea disable resize === */
+
+/*=== TypeaHead ===*/
+.autocomplete-color, .autocomplete-marker-color {
+    display: inline-block;
+    padding: 0px 7px 0px 7px;
+    margin-right: 5px;
+}
+
+.form-control.autocomplete.tt-input {
+    color: inherit;
+}
+
+.form-control[disabled].autocomplete.tt-input {
+    background-color: #eef1f5 !important;
+}
+
+.tt-menu h5 {
+    padding: 6px 12px;
+    font-weight: 700;
+    border-bottom: 1px solid #eee;
+}
+/*=== TypeaHead ===*/
+
+/*=== Widget de mapa ===*/
+div[class^="wes-map"] {
+    margin-top: 5px;
+}
+.no-content-map {
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    position: relative;
+    float: left;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.blur-map {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
+div[class^="wes-map"] .loading-points {
+    z-index: 500;
+    position: absolute;
+    bottom: 0;
+    cursor: -webkit-grab!important;
+}
+div[class^="wes-map"] .loading-points .ladda-spinner {
+    padding-left: 10px;
+}
+
+.awesome-marker-icon-white .icon-white {
+    margin-left: 5px;
+}
+/*=== Widget de mapa ===*/

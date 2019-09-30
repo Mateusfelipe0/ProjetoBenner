@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <assembly>
+    <name>Benner.Tecnologia.Wes.EntityService.DataContracts</name>
+    <version>2008.0.0.0</version>
+    <publickeytoken>f2db26731026fd37</publickeytoken>
+    <relpath>Benner.Tecnologia.Wes.EntityService.DataContracts.dll</relpath>
+    <extension downloadUri="Benner.Tecnologia.Wes.EntityService.DataContracts.zip" />
+  </assembly>
+</manifest>

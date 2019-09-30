@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>GERENCIARBANCODEDADOS</Id>
+  <Title>Gerenciar Banco de Dados</Title>
+  <Level>Benner</Level>
+  <Reports />
+  <Pages>
+    <string>PAGES_AUTO_DATABASESETTINGS_FORM</string>
+    <string>PAGES_AUTO_DATABASESETTINGS_GRID</string>
+  </Pages>
+  <Components />
+  <Operations>
+    <string>DATABASESETTINGS|DELETE</string>
+    <string>DATABASESETTINGS|INSERT</string>
+    <string>DATABASESETTINGS|TESTARCONFIGURACOES</string>
+    <string>DATABASESETTINGS|UPDATE</string>
+    <string>DATABASESETTINGS|VIEW</string>
+  </Operations>
+  <Process />
+  <Tasks />
+</TaskPortable>

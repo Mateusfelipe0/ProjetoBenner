@@ -1,0 +1,73 @@
+﻿<configuration>
+  <system.serviceModel>
+    <bindings>
+      
+      <customBinding>
+        <binding name="BinaryHttpBinding">
+          <binaryMessageEncoding />
+          <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+        </binding>
+        <binding name="BinaryHttpsBinding">
+          <binaryMessageEncoding />
+          <httpsTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+        </binding>
+      </customBinding>
+      <basicHttpBinding>
+        <binding name="BasicHttpBinding">
+          <security mode="None" />
+        </binding>
+        <binding name="BasicHttpsBinding">
+          <security mode="Transport" />
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      
+      <!-- WebEntityService -->
+      <endpoint name="WebEntityService_EndPoint_Http" address="http://localhost/WebApp/ServiceHost/WebEntityService.svc/http"
+          binding="customBinding" bindingConfiguration="BinaryHttpBinding"
+          contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebEntityService" />
+      <endpoint name="WebEntityService_EndPoint_Https" address="http://localhost/WebApp/ServiceHost/WebEntityService.svc/https"
+          binding="customBinding" bindingConfiguration="BinaryHttpsBinding"
+          contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebEntityService" />   
+           
+      <!-- WebAdministrationService -->
+      <endpoint name="WebAdministrationService_EndPoint_Http" address="http://localhost/WebApp/ServiceHost/WebAdministrationService.svc/http"
+         binding="customBinding" bindingConfiguration="BinaryHttpBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebAdministrationService" />
+      <endpoint name="WebAdministrationService_EndPoint_Https" address="http://localhost/WebApp/ServiceHost/WebAdministrationService.svc/https"
+         binding="customBinding" bindingConfiguration="BinaryHttpsBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebAdministrationService" />
+      
+      <!-- WebSecurityService -->
+      <endpoint name="WebSecurityService_EndPoint_Http" address="http://localhost/WebApp/ServiceHost/WebSecurityService.svc/http"
+         binding="customBinding" bindingConfiguration="BinaryHttpBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebSecurityService" />
+      <endpoint name="WebSecurityService_EndPoint_Https" address="http://localhost/WebApp/ServiceHost/WebSecurityService.svc/https"
+         binding="customBinding" bindingConfiguration="BinaryHttpsBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebSecurityService" />
+
+      <!-- WebReportService -->
+      <endpoint name="WebReportService_EndPoint_Http" address="http://localhost/WebApp/ServiceHost/WebReportService.svc/http"
+         binding="customBinding" bindingConfiguration="BinaryHttpBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebReportService" />
+      <endpoint name="WebReportService_EndPoint_Https" address="http://localhost/WebApp/ServiceHost/WebReportService.svc/https"
+         binding="customBinding" bindingConfiguration="BinaryHttpsBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebReportService" />
+
+      <!-- WebUrlService -->
+      <endpoint name="WebUrlService_EndPoint_Http" address="http://localhost/WebApp/ServiceHost/WebUrlService.svc/http"
+         binding="customBinding" bindingConfiguration="BinaryHttpBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebUrlService" />
+      <endpoint name="WebUrlService_EndPoint_Https" address="http://localhost/WebApp/ServiceHost/WebUrlService.svc/https"
+         binding="customBinding" bindingConfiguration="BinaryHttpsBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebUrlService" />
+
+      <!-- WebAuthenticationService -->
+      <endpoint name="WebAuthenticationService_EndPoint" address="http://localhost/WebApp/NonAuthenticatedServiceHost/AuthenticationService.svc"
+         binding="customBinding" bindingConfiguration="BinaryHttpBinding"
+         contract="Benner.Tecnologia.Wes.EntityService.ServiceContracts.IWebAuthenticationService" />
+
+    </client>
+  </system.serviceModel>
+</configuration>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>GERENCIARRELATORIOS</Id>
+  <Level>Tecnologia</Level>
+  <Reports />
+  <Pages />
+  <Components>
+    <string>Benner.AutomatedTests.Server.Entities.EntityBusiness.Tests.TestCollectionEntityBusiness|GENERATEREPORT</string>
+  </Components>
+  <Operations />
+  <Process />
+  <Tasks />
+</TaskPortable>

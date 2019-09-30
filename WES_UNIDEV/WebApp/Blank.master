@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" %>
+
+<%@ Register Assembly="Benner.Tecnologia.Wes.Components.WebApp" Namespace="Benner.Tecnologia.Wes.Components.WebApp" TagPrefix="wes" %>
+<%@ Register Assembly="Benner.Tecnologia.Wes.Components" Namespace="Benner.Tecnologia.Wes.Components" TagPrefix="wes" %>
+<%@ Register Src="~/uc/HeadSection.ascx" TagName="HeadSection" TagPrefix="wes" %>
+<%@ Register Src="~/uc/WesManager.ascx" TagName="WesManager" TagPrefix="wes" %>
+
+<!DOCTYPE html>
+
+<html lang="pt" class="no-js">
+<head runat="server">
+    <title></title>
+    <wes:HeadSection runat="server" />
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="formMain" runat="server">
+        <wes:WesManager ID="WesManager1" runat="server">
+            <Scripts>
+            </Scripts>
+        </wes:WesManager>
+
+        <asp:ContentPlaceHolder ID="Main" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

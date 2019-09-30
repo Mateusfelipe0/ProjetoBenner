@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ViewPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Z_WFTAREFAS.REPORT.TEC.GRID</Name>
+  <Level>Builder</Level>
+  <EntityName>Z_WFTAREFAS</EntityName>
+  <Type>Grid</Type>
+  <Version>10</Version>
+</ViewPortable>

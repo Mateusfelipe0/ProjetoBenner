@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<RolePortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>DATABASEADMINISTRATOR</Id>
+  <Title>DBA</Title>
+  <Level>Benner</Level>
+  <Tasks>
+    <string>GERENCIARBANCODEDADOS</string>
+  </Tasks>
+  <Roles />
+</RolePortable>

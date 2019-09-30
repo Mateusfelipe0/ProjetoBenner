@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<TaskPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>DESENVOLVER</Id>
+  <Level>Tecnologia</Level>
+  <Reports />
+  <Pages />
+  <Components />
+  <Operations>
+    <string>DATABASESETTINGS|DELETE</string>
+    <string>DATABASESETTINGS|INSERT</string>
+    <string>DATABASESETTINGS|TESTARCONFIGURACOES</string>
+    <string>DATABASESETTINGS|UPDATE</string>
+    <string>DATABASESETTINGS|VIEW</string>
+  </Operations>
+  <Process />
+  <Tasks />
+</TaskPortable>

@@ -1,0 +1,8 @@
+<Grid 
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+>
+<Grid x:Name="LayoutRoot" Background="White" Width="200" Height="200">
+<TextBlock x:Name="ProgressText" Margin="0,0,0,0" Text="0%" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Trebuchet MS" FontSize="24" FontWeight="Bold" Opacity="1" Foreground="#FF716770"/>
+</Grid>
+</Grid>

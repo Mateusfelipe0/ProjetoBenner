@@ -1,0 +1,90 @@
+﻿<configuration>
+  <system.serviceModel>
+    <bindings>
+
+      <customBinding>
+        <binding name="BinaryHttpBinding">
+          <binaryMessageEncoding>
+            <readerQuotas
+              maxDepth="2147483647"
+              maxStringContentLength="2147483647"
+              maxArrayLength="2147483647"
+              maxBytesPerRead="2147483647"
+              maxNameTableCharCount="2147483647" />
+          </binaryMessageEncoding >
+          <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize ="2147483647" />
+        </binding>
+        <binding name="BinaryHttpsBinding">
+          <binaryMessageEncoding>
+            <readerQuotas
+              maxDepth="2147483647"
+              maxStringContentLength="2147483647"
+              maxArrayLength="2147483647"
+              maxBytesPerRead="2147483647"
+              maxNameTableCharCount="2147483647" />
+          </binaryMessageEncoding >
+          <httpsTransport maxReceivedMessageSize="2147483647" maxBufferSize ="2147483647" />
+        </binding>
+      </customBinding>
+
+      <basicHttpBinding>
+        <binding name="BasicHttpBinding">
+          <security mode="None" />
+        </binding>
+        <binding name="BasicHttpsBinding">
+          <security mode="Transport" />
+        </binding>
+      </basicHttpBinding>
+
+    </bindings>
+
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="WebEntityServiceBehavior">
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+        <behavior name="WebAdministrationServiceBehavior">
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+        <behavior name="WebSecurityServiceBehavior">
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+        <behavior name="WebReportServiceBehavior">
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+        <behavior name="WebUrlServiceBehavior">
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+
+    <services>
+
+      <service behaviorConfiguration="WebEntityServiceBehavior" name="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.WebEntityService">
+        <endpoint address="http" binding="customBinding" bindingConfiguration="BinaryHttpBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebEntityService" />
+        <endpoint address="https" binding="customBinding" bindingConfiguration="BinaryHttpsBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebEntityService" />
+      </service>
+
+      <service behaviorConfiguration="WebAdministrationServiceBehavior" name="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.WebAdministrationService">
+        <endpoint address="http" binding="customBinding" bindingConfiguration="BinaryHttpBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebAdministrationService" />
+        <endpoint address="https" binding="customBinding" bindingConfiguration="BinaryHttpsBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebAdministrationService" />
+      </service>
+
+      <service behaviorConfiguration="WebSecurityServiceBehavior" name="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.WebSecurityService">
+        <endpoint address="http" binding="customBinding" bindingConfiguration="BinaryHttpBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebSecurityService" />
+        <endpoint address="https" binding="customBinding" bindingConfiguration="BinaryHttpsBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebSecurityService" />
+      </service>
+
+      <service behaviorConfiguration="WebReportServiceBehavior" name="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.WebReportService">
+        <endpoint address="http" binding="customBinding" bindingConfiguration="BinaryHttpBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebReportService" />
+        <endpoint address="https" binding="customBinding" bindingConfiguration="BinaryHttpsBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebReportService" />
+      </service>
+
+      <service behaviorConfiguration="WebUrlServiceBehavior" name="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.WebUrlService">
+        <endpoint address="http" binding="customBinding" bindingConfiguration="BinaryHttpBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebUrlService" />
+        <endpoint address="https" binding="customBinding" bindingConfiguration="BinaryHttpsBinding" contract="Benner.Tecnologia.Wes.EntityService.ServiceImplementation.IWebUrlService" />
+      </service>
+
+    </services>
+  </system.serviceModel>
+</configuration>

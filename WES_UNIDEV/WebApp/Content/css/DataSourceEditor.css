@@ -1,0 +1,32 @@
+﻿.fieldPath {
+    width: 50%;
+    padding-left: 5px;
+}
+.fieldAlias {
+    position: absolute;
+    top: 5px;
+    padding-left: 50%;
+}
+.fieldPathTitle {
+    margin: 10px 0 10px 5px;
+    font-weight: bold;
+}
+.fieldAliasTitle {
+    left: 5px;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    position: absolute;
+    padding-left: 50%;
+    top: 0;
+}
+#selectCommand {
+    height: 180px;
+}
+
+.dd3-content {
+    padding-left: 10px;
+}
+div#datasources-content .custom-alerts
+{
+    white-space: pre-wrap;
+}

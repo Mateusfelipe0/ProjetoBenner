@@ -1,0 +1,42 @@
+﻿.progress-no-break {
+    clear: both;
+}
+
+.progress {
+    background-color: #ccc;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress {
+    display: block;
+    height: 14px;
+    margin: 0;
+}
+
+.process-progress-bar {
+    font-size: 10px !important;
+    line-height: 13px !important;
+}
+
+.process-running {
+    color: #89c4f4;
+}
+
+.process-aborted {
+    color: #dfba49;
+}
+
+.process-error {
+    color: #f3565d;
+}
+
+.process-success {
+    color: #45b6af;
+}
+
+.progress-bar {
+    text-align: right;
+}
+
+.process-info {
+    color: #327ad5;
+}

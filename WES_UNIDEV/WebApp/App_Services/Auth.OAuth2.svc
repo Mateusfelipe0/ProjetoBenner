@@ -1,0 +1,293 @@
+<%@ ServiceHost Language="C#"
+    Service="OAuth2Service"
+    Factory="OAuth2ServiceHostFactory" %>
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Description;
+using System.Runtime.Serialization;
+using System.ServiceModel.Web;
+using System.IO;
+using System.Web;
+using Benner.Tecnologia.EnterpriseServiceLibrary;
+using Benner.Tecnologia.EnterpriseServiceLibrary.TokenAuthentication;
+using System.Net;
+
+public class OAuth2ServiceHostFactory : ServiceHostFactory
+{
+    protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+    {
+        ServiceHost host = new ServiceHost(serviceType, baseAddresses);
+        Type serviceContractType = typeof(OAuth2Service);
+
+        // WebHttpBinding - HTTP
+        if (HostFactoryHelper.ContainsHttpScheme(baseAddresses))
+        {
+            var serviceEndPoint = host.AddServiceEndpoint(serviceContractType, new WebHttpBinding(), "");
+            serviceEndPoint.Behaviors.Add(new WebHttpBehavior());
+        }
+
+        // Colocando HTTPS quando está ativado e quanto existe a configuração no .config.
+        // Mais detalhes em: http://wiki.benner.com.br/wiki/index.php?title=Servi%C3%A7os_ESL_com_protocolo_SOAP_e_HTTPS
+        if (HostFactoryHelper.ContainsHttpsScheme(baseAddresses) && HostFactoryHelper.ContainsWebHttpBindingConfiguration("webHttpsDefaultConfiguration"))
+        {
+            var serviceEndPointHttps = host.AddServiceEndpoint(serviceContractType, new WebHttpBinding("webHttpsDefaultConfiguration") { Name = "WebHttpsBinding" }, "");
+            serviceEndPointHttps.Behaviors.Add(new WebHttpBehavior());
+        }
+
+        // Mantendo o endereço ao solicitar wsdl
+        if (!host.Description.Behaviors.Contains(typeof(UseRequestHeadersForMetadataAddressBehavior)))
+        {
+            var requestHeadersForMetadataAddresBehavior = new UseRequestHeadersForMetadataAddressBehavior();
+
+            // para quando for http
+            if (HostFactoryHelper.ContainsHttpScheme(baseAddresses))
+                requestHeadersForMetadataAddresBehavior.DefaultPortsByScheme.Add("http", HostFactoryHelper.ReturnHttpPort(baseAddresses));
+
+            // para quando for https
+            if (HostFactoryHelper.ContainsHttpsScheme(baseAddresses))
+                requestHeadersForMetadataAddresBehavior.DefaultPortsByScheme.Add("https", HostFactoryHelper.ReturnHttpsPort(baseAddresses));
+
+            host.Description.Behaviors.Add(requestHeadersForMetadataAddresBehavior);
+        }
+
+        // WSDL acessível
+        if (!host.Description.Behaviors.Contains(typeof(ServiceMetadataBehavior)))
+            host.Description.Behaviors.Add(new ServiceMetadataBehavior());
+        ServiceMetadataBehavior smb = host.Description.Behaviors[typeof(ServiceMetadataBehavior)] as ServiceMetadataBehavior;
+        smb.HttpGetEnabled = true;
+
+        if (HostFactoryHelper.ContainsHttpsScheme(baseAddresses))
+        {
+            smb.HttpsGetEnabled = true;
+        }
+
+        // Sem detalhes de depuração
+        ServiceDebugBehavior sdb = host.Description.Behaviors.Find<ServiceDebugBehavior>();
+        sdb.IncludeExceptionDetailInFaults = false;
+        return host;
+    }
+}
+
+[ServiceContract(
+    SessionMode = SessionMode.NotAllowed)]
+[ServiceBehavior(
+    InstanceContextMode = InstanceContextMode.PerCall,
+    ConcurrencyMode = ConcurrencyMode.Multiple)]
+[AspNetCompatibilityRequirements(
+    RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+public class OAuth2Service
+{
+    [OperationContract]
+    [WebInvoke(
+        UriTemplate = "/Token",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        Method = "POST")]
+    public OAuth2TokenResponse Token(Stream request)
+    {
+        try
+        {
+            StreamReader requestReader = new StreamReader(request);
+            string querystring = requestReader.ReadToEnd();
+            var parameters = HttpUtility.ParseQueryString(querystring);
+
+            if (string.IsNullOrEmpty(parameters["grant_type"]))
+                throw new WebFaultException<OAuth2TokenErrorResponse>(
+                    new OAuth2TokenErrorResponse("unsupported_grant_type", "grant_type não informado"),
+                    HttpStatusCode.BadRequest);
+
+            if (!parameters["grant_type"].Equals("password", StringComparison.OrdinalIgnoreCase)
+                    && !parameters["grant_type"].Equals("authorization_code", StringComparison.OrdinalIgnoreCase)
+                    && !parameters["grant_type"].Equals("refresh_token", StringComparison.OrdinalIgnoreCase))
+                throw new WebFaultException<OAuth2TokenErrorResponse>(
+                    new OAuth2TokenErrorResponse("unsupported_grant_type", "grant_type não suportado"),
+                    HttpStatusCode.BadRequest);
+
+            OAuth2TokenResponse response = null;
+            if (parameters["grant_type"].Equals("authorization_code"))
+            {
+                if (string.IsNullOrEmpty(parameters["code"]))
+                    throw new WebFaultException<OAuth2TokenErrorResponse>(
+                        new OAuth2TokenErrorResponse("invalid_request", "code não informado"),
+                        HttpStatusCode.BadRequest);
+                if (string.IsNullOrEmpty(parameters["client_id"]))
+                    throw new WebFaultException<OAuth2TokenErrorResponse>(
+                        new OAuth2TokenErrorResponse("invalid_request", "client_id não informado"),
+                        HttpStatusCode.BadRequest);
+
+                string code = parameters["code"];
+                string clientId = parameters["client_id"];
+
+                var ticket = new TokenAuthenticationProvider().GrantAccessTokenFromAuthorizationCode(code, clientId);
+
+                response = new OAuth2TokenResponse()
+                {
+                    AccessToken = ticket.AccessToken,
+                    RefreshToken = ticket.RefreshToken,
+                    UserName = ticket.UserName,
+                    ExpiresIn = ticket.SecondsToExpire
+                };
+            }
+            else if (parameters["grant_type"].Equals("refresh_token"))
+            {
+                if (string.IsNullOrEmpty(parameters["refresh_token"]))
+                    throw new WebFaultException<OAuth2TokenErrorResponse>(
+                        new OAuth2TokenErrorResponse("invalid_request", "refresh_token não informado"),
+                        HttpStatusCode.BadRequest);
+                if (string.IsNullOrEmpty(parameters["client_id"]))
+                    throw new WebFaultException<OAuth2TokenErrorResponse>(
+                        new OAuth2TokenErrorResponse("invalid_request", "client_id não informado"),
+                        HttpStatusCode.BadRequest);
+
+                string refreshToken = parameters["refresh_token"];
+                string clientId = parameters["client_id"];
+
+                var ticket = new TokenAuthenticationProvider().GrantAccessTokenFromRefreshToken(refreshToken, clientId);
+
+                response = new OAuth2TokenResponse()
+                {
+                    AccessToken = ticket.AccessToken,
+                    UserName = ticket.AccessToken,
+                    ExpiresIn = ticket.SecondsToExpire
+                };
+            }
+            else if(parameters["grant_type"].Equals("password"))
+            {
+                if (string.IsNullOrEmpty(parameters["username"]))
+                    throw new WebFaultException<OAuth2TokenErrorResponse>(
+                        new OAuth2TokenErrorResponse("invalid_request", "username não informado"),
+                        HttpStatusCode.BadRequest);
+
+                if (string.IsNullOrEmpty(parameters["password"]))
+                    throw new WebFaultException<OAuth2TokenErrorResponse>(
+                        new OAuth2TokenErrorResponse("invalid_request", "password não informado"),
+                        HttpStatusCode.BadRequest);
+
+                string userName = HttpUtility.UrlDecode(parameters["username"]);
+                string password = HttpUtility.UrlDecode(parameters["password"]);
+
+                var ticket = new TokenAuthenticationProvider().GrantPasswordTicket(userName, password);
+
+                response = new OAuth2TokenResponse()
+                {
+                    AccessToken = ticket.AccessToken,
+                    UserName = ticket.UserName,
+                    ExpiresIn = ticket.SecondsToExpire
+                };
+            }
+            return response;
+        }
+        catch (WebFaultException<OAuth2TokenErrorResponse>)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            throw new WebFaultException<OAuth2TokenErrorResponse>(
+                    new OAuth2TokenErrorResponse("invalid_request", exception.Message),
+                    HttpStatusCode.BadRequest);
+        }
+    }
+}
+    
+/// <summary>
+/// Para mais detalhes ver a spec 
+/// de um Successful Response do OAuth 2.0 em:
+/// http://tools.ietf.org/html/rfc6749#section-5.1
+/// </summary>
+[DataContract]
+public class OAuth2TokenResponse
+{
+    public OAuth2TokenResponse()
+    {
+        TokenType = "bearer";
+    }
+
+    /// <summary>
+    /// REQUIRED.  The access token issued by the authorization server.
+    /// </summary>
+    [DataMember(Name = "access_token", Order = 0)]
+    public string AccessToken { get; set; }
+        
+    /// <summary>
+    /// REQUIRED.  The type of the token issued as described 
+    ///  in Section 7.1.  Value is case insensitive.
+    /// </summary>
+    [DataMember(Name = "token_type", Order = 1)]
+    public string TokenType { get; set; }
+        
+    /// <summary>
+    /// RECOMMENDED.  The lifetime in seconds of the access token.  For
+    ///  example, the value "3600" denotes that the access token will
+    ///  expire in one hour from the time the response was generated.
+    ///  If omitted, the authorization server SHOULD provide the
+    ///  expiration time via other means or document the default value.
+    /// </summary>
+    [DataMember(Name = "expires_in", Order = 2)]
+    public long ExpiresIn { get; set; }
+        
+    /// <summary>
+    /// Este não faz parte da spec do OAuth2, é cortesia Benner
+    /// </summary>
+    [DataMember(Name = "username", Order = 3)]
+    public string UserName { get; set; }
+
+
+    /// <summary>
+    /// OPTIONAL. The refresh token, which can be used to obtain new 
+    /// access tokens using the same authorization grant as described
+    /// in Section 6.
+    /// </summary>
+    [DataMember(Name = "refresh_token", Order = 4, EmitDefaultValue = false)]
+    public string RefreshToken { get; set; }
+}
+    
+/// <summary>
+/// Para mais detalhes ver a spec 
+/// de um Error Response do OAuth 2.0 em:
+/// http://tools.ietf.org/html/rfc6749#section-5.2
+/// </summary>
+[DataContract]
+public class OAuth2TokenErrorResponse
+{
+    public OAuth2TokenErrorResponse(string error, string errorDescription = "")
+    {
+        Error = error;
+        ErrorDescription = errorDescription;
+    }
+
+    /// <summary>
+    /// REQUIRED.  A single ASCII [USASCII] error code from the following:
+    ///     invalid_request
+    ///     invalid_client
+    ///     invalid_grant
+    ///     unauthorized_client
+    ///     unsupported_grant_type
+    ///     invalid_scope
+    /// </summary>
+    [DataMember(Name = "error", Order = 0)]
+    public string Error { get; set; }
+        
+    /// <summary>
+    /// OPTIONAL.  Human-readable ASCII [USASCII] text providing
+    ///  additional information, used to assist the client developer in
+    ///  understanding the error that occurred.
+    ///  Values for the "error_description" parameter MUST NOT include
+    ///  characters outside the set %x20-21 / %x23-5B / %x5D-7E.
+    /// </summary>
+    [DataMember(Name = "error_description", Order = 1)]
+    public string ErrorDescription { get; set; }
+        
+    //    /// <summary>
+    //    /// OPTIONAL.  A URI identifying a human-readable web page with
+    //    ///  information about the error, used to provide the client
+    //    ///  developer with additional information about the error.
+    //    ///  Values for the "error_uri" parameter MUST conform to the
+    //    ///  URI-reference syntax and thus MUST NOT include characters
+    //    ///  outside the set %x21 / %x23-5B / %x5D-7E.
+    //    /// </summary>
+    //    [DataMember(Name = "error_uri", Order = 2)]
+    //    public string ErrorUri { get; set; }
+}

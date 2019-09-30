@@ -1,0 +1,62 @@
+﻿@import url("../../content/assets/css/themes/grey.min.css");
+
+.page-header.navbar .page-logo .logo {
+    background-image: url(../../content/img/logo-benner-branca.png);
+}
+
+.menu-do-desenvolvedor {
+    background-color: #657384 !important;
+}
+
+.usuario {
+    background-color: #31c7b2 !important;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+}
+
+.usuario:hover {
+    background-color: #31c7b2 !important;
+    color: #fff;
+}
+/* === Pesquisa ===*/
+#searcher > a:hover {
+    background-color: #657384;
+}
+
+    #searcher > a > i {
+        color: #9fa7b1;
+        font-size: 17px;
+    }
+
+    #searcher:hover > a > i {
+        color: #c9ced3;
+    }
+/* === Pesquisa ===*/
+/* === Help F1 ===*/
+#helpDocumentation > a:hover {
+    background-color: #657384;
+}
+
+    #helpDocumentation > a > i {
+        color: #9fa7b1;
+        font-size: 17px;
+    }
+
+    #helpDocumentation:hover > a > i {
+        color: #c9ced3;
+    }
+/* === Help F1 ===*/
+/* === ChatBot ===*/
+#chat-bot > a:hover,
+#chat-bot > a:focus { background-color: #657384; }
+#chat-bot > a > i { color: #9fa7b1; }
+#chat-bot > a:hover > i,
+#chat-bot > a:focus > i { color: #c9ced3; }
+.page-quick-sidebar-wrapper { background: #5e6672; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a { border-bottom-color: #e87e04 !important; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message { background: #566170;}
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .body { color: #eee !important; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow { border-right-color: #566170 !important; }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow { border-left-color: #566170 !important; }
+/* === ChatBot ===*/

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ScriptPortable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ViewName>TESTEXECUTIONFROMCOLLECTION.CUSTOM.GRID</ViewName>
+  <EntityName>TESTEXECUTION</EntityName>
+  <Level>Benner</Level>
+  <Scripts>
+    <ScriptItemPortable>
+      <FunctionName>InitializeRow</FunctionName>
+      <LanguageName>IronPython</LanguageName>
+      <SourceCode>def InitializeRow(entity, row):
+    from System import String
+    row.GetCellByName("STATUS").Tooltip = entity["STATUS"].GetString()
+    if (entity["STATUS"].GetInt32() == 0):
+        row.GetCellByName("STATUS").FontIcon = "badge badge-success"
+    if (entity["STATUS"].GetInt32() == 1) or (entity["STATUS"].GetInt32() == 2) or (entity["STATUS"].GetInt32() == 3):
+        row.GetCellByName("STATUS").FontIcon = "badge badge-danger"
+</SourceCode>
+    </ScriptItemPortable>
+  </Scripts>
+</ScriptPortable>

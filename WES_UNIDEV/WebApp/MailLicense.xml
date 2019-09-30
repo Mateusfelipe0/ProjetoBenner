@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Id>96039cdb-db68-4b08-8ffc-16788a072132</Id>
+  <ProductName>Mail.dll</ProductName>
+  <SubscriptionUntil>2018-08-23</SubscriptionUntil>
+  <RegisteredTo>Benner Sistemas S/A</RegisteredTo>
+  <LicenseType>single developer</LicenseType>
+  <BuyerName>Benner Sistemas S/A</BuyerName>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>zMksSGDXWyQ/Nyg4Gn9d1hvthso=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>g2xvymvOfa1u5ZtlTSnXu+s1+92NHYJLqNJfvJ+8GT99o9Gi2kh4kwo2z6gbN70RFllId74j1V44ORzpxw3P1vKm2a0JtZPTIVzWNAHZ9yGPWpL5mhzKY9FIJAFR+yg+iutjHJt2Aic4vyEk7+R4savAkrP6wNZ8LwlEMJngsqw=</SignatureValue>
+  </Signature>
+</License>

@@ -1,0 +1,71 @@
+<%@ ServiceHost Language="C#" 
+    Service="NetTcpAuthService" 
+    Factory="NetTcpAuthServiceHostFactory" %>
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Description;
+using System.Runtime.Serialization;
+using System.ServiceModel.Web;
+using System.IO;
+using System.Web;
+using Benner.Tecnologia.EnterpriseServiceLibrary.TokenAuthentication;
+
+public class NetTcpAuthServiceHostFactory : ServiceHostFactory
+{
+    protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+    {
+        ServiceHost host = new ServiceHost(serviceType, baseAddresses);
+        Type serviceContractType = typeof(NetTcpAuthService);
+
+        
+        //TODO: NetTcpBinding exige configuração para ser "hosteado" no IIS
+        // http://blogs.msdn.com/b/james_osbornes_blog/archive/2010/12/07/hosting-in-iis-using-nettcpbinding.aspx
+        // http://msdn.microsoft.com/en-us/library/ms731053.aspx
+        
+        
+        var binding = new NetTcpBinding();
+        binding.Security.Mode = SecurityMode.None;
+        binding.PortSharingEnabled = true;
+        host.AddServiceEndpoint(serviceContractType, binding, "net.tcp://localhost:808/WebApp/App_Services/AuthTcp.svc");
+
+
+        // Service metadata
+        if (!host.Description.Behaviors.Contains(typeof(ServiceMetadataBehavior)))
+            host.Description.Behaviors.Add(new ServiceMetadataBehavior());
+        ServiceMetadataBehavior smb = host.Description.Behaviors[typeof(ServiceMetadataBehavior)] as ServiceMetadataBehavior;
+        
+        host.AddServiceEndpoint(
+            ServiceMetadataBehavior.MexContractName, 
+            MetadataExchangeBindings.CreateMexTcpBinding(),
+            "mex");
+         
+        
+        return host;
+    }
+}
+
+[ServiceContract(
+    SessionMode = SessionMode.Allowed)]
+[ServiceBehavior(
+    InstanceContextMode = InstanceContextMode.PerCall,
+    ConcurrencyMode = ConcurrencyMode.Multiple)]
+[AspNetCompatibilityRequirements(
+    RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+public class NetTcpAuthService
+{
+    [OperationContract]
+    public string GrantPasswordAccessToken(string username, string password)
+    {
+        if (string.IsNullOrEmpty(username))
+            throw new InvalidOperationException("username não informado");
+
+        if (string.IsNullOrEmpty(password))
+            throw new InvalidOperationException("password não informado");
+
+        var ticket = new TokenAuthenticationProvider().GrantPasswordTicket(username, password);
+
+        return string.Format("Bearer {0}", ticket.AccessToken);
+    }
+}

@@ -1,0 +1,73 @@
+<%@ ServiceHost Language="C#" 
+    Service="WSHttpAuthService" 
+    Factory="WSHttpAuthServiceHostFactory" %>
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Description;
+using System.Runtime.Serialization;
+using System.ServiceModel.Web;
+using System.IO;
+using System.Web;
+using Benner.Tecnologia.EnterpriseServiceLibrary.TokenAuthentication;
+
+public class WSHttpAuthServiceHostFactory : ServiceHostFactory
+{
+    protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+    {
+        ServiceHost host = new ServiceHost(serviceType, baseAddresses);
+        Type serviceContractType = typeof(WSHttpAuthService);
+
+        // WSHttpBinding
+        WSHttpBinding wsHttpBinding = new WSHttpBinding();
+        wsHttpBinding.Security.Mode = SecurityMode.Message;
+        wsHttpBinding.Security.Message.EstablishSecurityContext = false;
+        wsHttpBinding.Security.Message.NegotiateServiceCredential = false;
+        wsHttpBinding.Security.Message.ClientCredentialType = MessageCredentialType.None;
+
+        host.Credentials.ServiceCertificate.SetCertificate(
+            System.Security.Cryptography.X509Certificates.StoreLocation.LocalMachine,
+            System.Security.Cryptography.X509Certificates.StoreName.My,
+            System.Security.Cryptography.X509Certificates.X509FindType.FindBySubjectName,
+            "localhost");
+        host.AddServiceEndpoint(serviceContractType, wsHttpBinding, "");
+
+        
+        
+        // Service metadata
+        if (!host.Description.Behaviors.Contains(typeof(ServiceMetadataBehavior)))
+            host.Description.Behaviors.Add(new ServiceMetadataBehavior());
+        ServiceMetadataBehavior smb = host.Description.Behaviors[typeof(ServiceMetadataBehavior)] as ServiceMetadataBehavior;
+        smb.HttpGetEnabled = true;
+        
+        // Service Debug
+        ServiceDebugBehavior sdb = host.Description.Behaviors.Find<ServiceDebugBehavior>();
+        sdb.IncludeExceptionDetailInFaults = false;
+        return host;
+    }
+}
+
+[ServiceContract(
+    SessionMode = SessionMode.NotAllowed)]
+[ServiceBehavior(
+    InstanceContextMode = InstanceContextMode.PerCall,
+    ConcurrencyMode = ConcurrencyMode.Multiple)]
+[AspNetCompatibilityRequirements(
+    RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+public class WSHttpAuthService
+{
+    [OperationContract]
+    public string GrantPasswordAccessToken(string username, string password)
+    {
+        if (string.IsNullOrEmpty(username))
+            throw new InvalidOperationException("username não informado");
+
+        if (string.IsNullOrEmpty(password))
+            throw new InvalidOperationException("password não informado");
+
+        var ticket = new TokenAuthenticationProvider().GrantPasswordTicket(username, password);
+
+        return string.Format("Bearer {0}", ticket.AccessToken);
+    }
+}
